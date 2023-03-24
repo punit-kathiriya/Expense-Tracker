@@ -1,10 +1,17 @@
-body {
+body { margin: 0;
+  padding: 0;
+  /* background: #ffffff;
+  display: block;
+  margin: 0 auto; */
   background-color: #e7e7e7;
+  /* border-top-right-radius: 100px #000;
+  border-left: 100px #000 solid;
+  border-right: 100px #000 solid; */
 }
 
 .header {
   text-align: center;
-  margin-top: 50px;
+  margin-top: 150px;
 }
 
 .IncomeExpenses {
