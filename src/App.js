@@ -1,11 +1,15 @@
+import React from 'react';
+import { Header } from './components/Header';
+import { Balance } from './components/Balance';
+import { IncomeExpenses } from './components/IncomeExpenses';
 import './App.css';
 
 function App() {
   return (
-    <div className="App">
-      <header className="App-header">
-        <h2>Hello World, This is Group 7</h2>
-      </header>
+    <div className="header">
+      <Header />
+      <Balance />
+      <IncomeExpenses />
     </div>
   );
 }
