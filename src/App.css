@@ -1,21 +1,24 @@
-body { margin: 0;
+body { 
+  margin: 0;
   padding: 0;
   /* background: #ffffff;
   display: block;
   margin: 0 auto; */
-  background-color: #e7e7e7;
+  background-color: #06021f;
   /* border-top-right-radius: 100px #000;
   border-left: 100px #000 solid;
   border-right: 100px #000 solid; */
 }
 
-.header {
+.cont {
+  background-color: #ffffff;
   text-align: center;
-  margin-top: 150px;
+  width: 1000px;
+  margin: 0 auto;
 }
 
 .IncomeExpenses {
-  background-color: #ffffff;
+  background-color: #c7c7c7;
   display: flex;
   gap: 10px;
   width: 300px;
