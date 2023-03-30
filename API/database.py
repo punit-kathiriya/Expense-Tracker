@@ -3,8 +3,6 @@
 # Desc: File currently in development containing code for creating a database
 
 import os
-import sqlite3
-import itertools
 from sqlalchemy import *
 from sqlalchemy.orm import sessionmaker
 from sqlalchemy.sql.expression import ColumnClause
