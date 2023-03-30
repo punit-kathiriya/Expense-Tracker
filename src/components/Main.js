@@ -8,7 +8,7 @@ export const Main = () => {
       <h4>0.00€</h4>
       <div>
         <form>
-          <input type="number"  name="price" min="1" max="5" placeholder="0.00 €" required/> <br></br>
+          <input type="number" className="Input" name="price" min="1" max="5" placeholder="0.00 €" required/> <br></br>
           <label>Which car?</label><br></br>
           <select name="cars" id="cars">
             <option value="">Choose your car!</option>
