@@ -4,27 +4,54 @@ body {
   /* background: #ffffff;
   display: block;
   margin: 0 auto; */
-  background-color: #06021f;
   /* border-top-right-radius: 100px #000;
   border-left: 100px #000 solid;
   border-right: 100px #000 solid; */
 }
 
-.cont {
-  background-color: #ffffff;
+.App {
   text-align: center;
   width: 1000px;
   margin: 0 auto;
 }
 
-.IncomeExpenses {
-  background-color: #c7c7c7;
-  display: flex;
-  gap: 10px;
-  width: 300px;
-  margin: 0 auto;
+/* Header styling */
+.Nabbar {
+  right: 0;
+  top: 0;
+  width: 100%;
+  align-items: center;
 }
 
-.IncomeExpensesChild {
+.Navlist {
+  display: flex;
   margin: 0 auto;
+  list-style: none;
+  padding-top: 10px;
+}
+
+.Navlist a, .LogSysystem a {
+  color: rgb(5, 36, 81);
+  font-size: 14px;
+  margin-left: 60px;
+  font-weight: 600px;
+  border-bottom: 2px solid transparent;
+  transition: all .55s ease;
+  text-decoration: none;
+
+}
+
+.Navlist a:hover, .LogSysystem a:hover{
+  border-bottom: 1px solid blueviolet;
+  padding-bottom: 5px;
+}
+
+.LogSysystem {
+  display: flex;
+  position: absolute;
+  left: 80%;
+  top: 0;
+  list-style: none;
+  font-size: 30px;
+  cursor: pointer;
 }
