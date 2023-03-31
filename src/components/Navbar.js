@@ -11,7 +11,7 @@ export const Navbar = () => {
           <li><Link to="/cars">CARS</Link></li>
         </ul>
       </nav>
-      <div className='LogSysystem'>
+      <div className='LogSystem'>
         <li><Link to="/#">SIGN IN</Link></li>
         <li><Link to="/#">SIGN UP</Link></li>
       </div>
