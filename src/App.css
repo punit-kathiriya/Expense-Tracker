@@ -47,7 +47,7 @@ button {
   padding-top: 10px;
 }
 
-.Navlist a, .LogSysystem a {
+.Navlist a, .LogSystem a {
   color: rgb(5, 36, 81);
   font-size: 14px;
   margin-left: 60px;
@@ -58,7 +58,7 @@ button {
 
 }
 
-.Navlist a:hover, .LogSysystem a:hover{
+.Navlist a:hover, .LogSystem a:hover{
   border-bottom: 1px solid blueviolet;
   padding-bottom: 5px;
 }
