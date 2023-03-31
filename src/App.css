@@ -72,3 +72,11 @@ button {
   font-size: 30px;
   cursor: pointer;
 }
+
+.header-side{
+  text-align: left;
+}
+
+.expense-data{
+  text-align: left;
+}
