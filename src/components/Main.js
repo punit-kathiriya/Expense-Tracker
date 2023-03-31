@@ -19,7 +19,6 @@ export const Main = () => {
               </Card.Text> */}
             </Card.Body>
           </Card>
-
         </Col>
       </Row>
       <Row>
