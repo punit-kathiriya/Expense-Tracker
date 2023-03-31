@@ -19,6 +19,24 @@ button {
   cursor: pointer;
 }
 
+.App-HomePage {
+  min-height: 100vh;
+  display: flex;
+  flex-direction: column;
+  align-items: center;
+  justify-content: center;
+  font-size: calc(12px + 1vmin);
+}
+
+.Cars {
+  min-height: 100vh;
+  display: flex;
+  flex-direction: column;
+  align-items: center;
+  justify-content: center;
+  font-size: calc(12px + 1vmin);
+}
+
 .Input {
   width: 350px;
   padding: 10px;

@@ -3,7 +3,7 @@ import React from 'react';
 export const Cars = () => {
   return (
     <>
-      <div>
+      <div className='Cars'>
         <h1>Cars</h1>
         <h4>Car 1</h4>
         <h4>Car 2</h4>
