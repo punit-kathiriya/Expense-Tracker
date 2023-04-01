@@ -6,6 +6,7 @@ import { Cars } from './components/Cars';
 import  AppNav  from './components/AppNav';
 import { API } from './apitest';
 import { Routes, Route } from 'react-router-dom';
+import {AddCars} from './components/AddCar';
 
 
 
@@ -18,6 +19,7 @@ function App() {
         <Route path="/main" element={<Main />} />
         <Route path="/cars" element={<Cars />} />
         <Route path="/api" element={<API />} />
+        <Route path="/cars/add" element={<AddCars />} />
     </Routes>
     </div>
   );
