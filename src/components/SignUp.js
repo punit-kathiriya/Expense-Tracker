@@ -11,6 +11,7 @@ export const SignUp = () => {
                 <img src='https://mdbootstrap.com/img/new/standard/city/044.webp' className='img-fluid shadow-4' alt='...' />
             </Col>
             <Col>
+            <div className="Form">
                 <form>
                     <h3>Sign Up</h3>
                     <div className="mb-3">
@@ -50,6 +51,7 @@ export const SignUp = () => {
                     Already registered <a href="/signin">sign in?</a>
                     </p>
                 </form>
+            </div>
             </Col>     
         </Row>
         

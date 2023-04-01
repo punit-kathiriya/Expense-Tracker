@@ -9,6 +9,18 @@ body {
   border-right: 100px #000 solid; */
 }
 
+.Form {
+  background: #f5f4f4;
+  padding: 100px 50px;
+  margin: 10px 50px;
+  border-radius: 5px;
+  box-shadow: rgba(21, 3, 123, 0.15) 0px 48px 100px 0px;
+}
+
+#check {
+  margin-left: 10px;
+}
+
 .auth-wrapper {
   display: flex;
   justify-content: center;
