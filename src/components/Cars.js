@@ -1,15 +1,12 @@
 import React from 'react';
-import Container from 'react-bootstrap/Container';
 import Row from 'react-bootstrap/Row';
 import Col from 'react-bootstrap/Col';
 import Button from 'react-bootstrap/Button';
-import Form from 'react-bootstrap/Form';
 import Card from 'react-bootstrap/Card';
-
 
 export const Cars = () => {
   return (
-    <Container>
+    <>
       <Row className='mt-5'>
         <Col xs={12} md={8}><h1>Car List</h1></Col>
         <Col xs={12} md={4}>
@@ -60,30 +57,7 @@ export const Cars = () => {
 
         </Col>
       </Row>
-      
-      <Row className='mt-2'>
-        <Col xs={12} md={12}>
-          
-
-        </Col>
-
-      </Row>
-      {/* <>
-        <div className='Cars'>
-          <h1>Cars</h1>
-          <h4>Car 1</h4>
-          <h4>Car 2</h4>
-          <h4>Car 3</h4>
-          <form>
-            <input type="text" className="Input" placeholder="Write you car name" required /> <br></br>
-            <input type="checkbox" required></input>
-            <label> Is your car electric?</label><br></br>
-            <button type='submit'>Add car +</button>
-          </form>
-        </div>
-      </> */}
-    </Container>
-
+    </>
   );
 };
 
