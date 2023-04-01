@@ -3,7 +3,7 @@ import './App.css';
 import { Home } from './components/Home';
 import { Main } from './components/Main';
 import { Cars } from './components/Cars';
-import { Navbar } from './components/Navbar';
+import  AppNav  from './components/AppNav';
 import { API } from './apitest';
 import { Routes, Route } from 'react-router-dom';
 
@@ -12,7 +12,7 @@ import { Routes, Route } from 'react-router-dom';
 function App() {
   return (
     <div className="App">
-      <Navbar />
+      <AppNav />
       <Routes>
         <Route path="/" element={<Home />} />
         <Route path="/main" element={<Main />} />
