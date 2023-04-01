@@ -8,7 +8,7 @@ import Card from 'react-bootstrap/Card';
 
 export const Main = () => {
   return (
-    <Container>
+    <>
       <Row className='mt-5'>
         <Col xs={12} md={12}>
           <Card>
@@ -48,13 +48,12 @@ export const Main = () => {
             </Form.Group>
 
             <Button variant="primary" type="submit">
-              Submit
+              Add
             </Button>
           </Form>
         </Col>
       </Row>
-    </Container>
-
+    </>
   );
 };
 
