@@ -1,3 +1,7 @@
+// File name: SignUp.js
+// Auth: Sami Wazni
+// Desc: File currently in development containing code for user sign up
+
 import React from 'react';
 import { Row, Col } from 'react-bootstrap';
 import Log from '../images/Log.jpg';
@@ -7,7 +11,7 @@ export const SignUp = () => {
         <div className="LogPages">
         <Row>
             <Col>
-                <img src={Log} alt="SignIn/SignUp" />
+                <img src={Log} alt="..." />
             </Col>
             <Col>
             <div className="Form">

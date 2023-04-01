@@ -9,7 +9,7 @@ export const AddCars = () => {
     return (
         <>
         <Row>
-            <Col className='mt-5 expense-data' xs={12} md={12}>
+            <Col className='mt-5 expense-data'>
                 <h2>Add Car</h2>
                 <Form>
                     <Form.Group className="mb-3" controlId="formBasic">
@@ -36,6 +36,9 @@ export const AddCars = () => {
                         Add Car
                     </Button>
                 </Form>
+            </Col>
+            <Col xs lg="5">
+            
             </Col>
         </Row>
         </>

@@ -16,8 +16,8 @@ import { Container } from 'react-bootstrap';
 function App() {
   return (
     <div className="App">
-      <Container className="text-left">
-        <AppNav />
+      <AppNav />
+      <Container className="">
         <Routes>
         <Route path="/" element={<Home />} />
         <Route path="/main" element={<Main />} />

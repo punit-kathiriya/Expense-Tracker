@@ -1,15 +1,17 @@
+// File name: SignIn.js
+// Auth: Sami Wazni
+// Desc: File currently in development containing code for user sign in
+
 import React from 'react';
-import Button from 'react-bootstrap/Button';
-import Form from 'react-bootstrap/Form';
-import Container from 'react-bootstrap/Container';
 import { Row, Col } from 'react-bootstrap';
 import Log from '../images/Log.jpg';
+
 export const SignIn = () => {
   return (
     <div className="LogPages">
     <Row>
         <Col>
-            <img src={Log} alt="SignIn/SignUp" />
+            <img src={Log} alt="..." />
         </Col>
         <Col>
         <div className="Form">
