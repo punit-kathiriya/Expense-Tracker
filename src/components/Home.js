@@ -4,6 +4,7 @@ import Row from 'react-bootstrap/Row';
 import Col from 'react-bootstrap/Col';
 import Card from 'react-bootstrap/Card';
 import Button from 'react-bootstrap/Button';
+import { CiCirclePlus } from "react-icons/ci";
 
 export const Home = () => {
   return (
@@ -11,8 +12,8 @@ export const Home = () => {
       <Row className='mt-5'>
       <Col xs={12} md={8}><h1>Expense Tracker App!</h1></Col>
         <Col xs={12} md={4}>
-        <Button href="/main"  variant="primary" size="lg" type="buttton">
-            Add Expence
+        <Button href="/main"  variant="primary" type="buttton">
+            Add Expence <CiCirclePlus />
           </Button>
         </Col>
       </Row>

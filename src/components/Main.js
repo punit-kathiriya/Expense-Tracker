@@ -5,6 +5,7 @@ import Col from 'react-bootstrap/Col';
 import Button from 'react-bootstrap/Button';
 import Form from 'react-bootstrap/Form';
 import Card from 'react-bootstrap/Card';
+import { CiCirclePlus } from "react-icons/ci";
 
 export const Main = () => {
   return (
@@ -48,7 +49,7 @@ export const Main = () => {
             </Form.Group>
 
             <Button variant="primary" type="submit">
-              Add Expense
+              Add Expense <CiCirclePlus />
             </Button>
           </Form>
         </Col>

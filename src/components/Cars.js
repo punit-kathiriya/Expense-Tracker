@@ -3,6 +3,9 @@ import Row from 'react-bootstrap/Row';
 import Col from 'react-bootstrap/Col';
 import Button from 'react-bootstrap/Button';
 import Card from 'react-bootstrap/Card';
+import { CiCircleMinus } from "react-icons/ci";
+import { CiEdit } from "react-icons/ci";
+import { CiCirclePlus } from "react-icons/ci";
 
 export const Cars = () => {
   return (
@@ -10,8 +13,8 @@ export const Cars = () => {
       <Row className='mt-5'>
         <Col xs={12} md={8}><h1>Car List</h1></Col>
         <Col xs={12} md={4}>
-        <Button href="/cars/add" variant="primary" size="lg" type="buttton">
-            Add Car
+        <Button href="/cars/add" variant="primary" type="buttton">
+            Add Car <CiCirclePlus />
           </Button>
         </Col>
       </Row>
@@ -25,10 +28,10 @@ export const Cars = () => {
                 </Col>
                 <Col xs={12} md={4}>
                   <Button href="/car/edit" className='mb-3' variant="primary" size="xs" type="buttton">
-                    Edit
+                    Edit <CiEdit />
                   </Button>
                   <Button href="/car/remove" variant="danger" size="xs" type="buttton">
-                    Remove
+                    Remove <CiCircleMinus />
                   </Button>
                 </Col>
               </Row>
@@ -45,10 +48,10 @@ export const Cars = () => {
                 </Col>
                 <Col xs={12} md={4}>
                   <Button href="/car/edit" className='mb-3' variant="primary" size="xs" type="buttton">
-                    Edit
+                    Edit <CiEdit />
                   </Button>
                   <Button href="/car/remove" variant="danger" size="xs" type="buttton">
-                    Remove
+                    Remove <CiCircleMinus />
                   </Button>
                 </Col>
               </Row>
