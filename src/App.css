@@ -9,92 +9,50 @@ body {
   border-right: 100px #000 solid; */
 }
 
-button {
-  padding: 10px 30px;
-  border: none;
-  border-radius: 5px;
-  background: #120346;
-  color: #fff;
-  margin: 10px;
-  cursor: pointer;
+.auth-wrapper {
+  display: flex;
+  justify-content: center;
+  flex-direction: column;
+  text-align: left;
+}
+.auth-inner {
+  width: 450px;
+  margin: auto;
+  background: #ffffff;
+  box-shadow: 0px 14px 80px rgba(34, 35, 58, 0.2);
+  padding: 40px 55px 45px 55px;
+  border-radius: 15px;
+  transition: all .3s;
+}
+.auth-wrapper .form-control:focus {
+  border-color: #167bff;
+  box-shadow: none;
+}
+.auth-wrapper h3 {
+  text-align: center;
+  margin: 0;
+  line-height: 1;
+  padding-bottom: 20px;
+}
+.custom-control-label {
+  font-weight: 400;
+}
+.forgot-password,
+.forgot-password a {
+  text-align: right;
+  font-size: 13px;
+  padding-top: 10px;
+  color: #7f7d7d;
+  margin: 0;
+}
+.forgot-password a {
+  color: #167bff;
 }
 
-.App-HomePage {
-  min-height: 100vh;
-  display: flex;
-  flex-direction: column;
-  align-items: center;
-  justify-content: center;
-  font-size: calc(12px + 1vmin);
-}
-
-.Cars {
-  min-height: 100vh;
-  display: flex;
-  flex-direction: column;
-  align-items: center;
-  justify-content: center;
-  font-size: calc(12px + 1vmin);
-}
 
 .Input {
   width: 350px;
   padding: 10px;
   border: 1px solid #d1d0d0;
   border-radius: 5px;
-}
-
-.App {
-  text-align: center;
-  width: 1000px;
-  margin: 0 auto;
-}
-
-/* Header styling */
-.Nabbar {
-  right: 0;
-  top: 0;
-  width: 100%;
-  align-items: center;
-}
-
-.Navlist {
-  display: flex;
-  margin: 0 auto;
-  list-style: none;
-  padding-top: 10px;
-}
-
-.Navlist a, .LogSystem a {
-  color: rgb(5, 36, 81);
-  font-size: 14px;
-  margin-left: 60px;
-  font-weight: 600px;
-  border-bottom: 2px solid transparent;
-  transition: all .55s ease;
-  text-decoration: none;
-
-}
-
-.Navlist a:hover, .LogSystem a:hover{
-  border-bottom: 1px solid blueviolet;
-  padding-bottom: 5px;
-}
-
-.LogSystem {
-  display: flex;
-  position: absolute;
-  left: 80%;
-  top: 0;
-  list-style: none;
-  font-size: 30px;
-  cursor: pointer;
-}
-
-.header-side{
-  text-align: left;
-}
-
-.expense-data{
-  text-align: left;
 }
