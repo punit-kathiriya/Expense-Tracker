@@ -24,7 +24,7 @@ export const Cars = () => {
             <Card.Body>
               <Row>
                 <Col xs={12} md={8}>
-                  <Card.Title className='header-side'><h2 className='mb-2'>Micra</h2>Nishan</Card.Title>
+                  <Card.Title className='header-side'><h2 className='mb-2'>Micra</h2>Nissan</Card.Title>
                 </Col>
                 <Col xs={12} md={4}>
                   <Button href="/car/edit" className='mb-3' variant="primary" size="xs" type="buttton">
@@ -44,7 +44,7 @@ export const Cars = () => {
             <Card.Body>
               <Row>
                 <Col xs={12} md={8}>
-                  <Card.Title className='header-side'><h2 className='mb-2'>Octavia</h2>Skoda</Card.Title>
+                  <Card.Title className='header-side'><h2 className='mb-2'>Octavia</h2>Škoda</Card.Title>
                 </Col>
                 <Col xs={12} md={4}>
                   <Button href="/car/edit" className='mb-3' variant="primary" size="xs" type="buttton">
