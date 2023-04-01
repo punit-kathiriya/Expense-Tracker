@@ -1,30 +1,25 @@
 import React from 'react';
-import Button from 'react-bootstrap/Button';
-import Form from 'react-bootstrap/Form';
-import Container from 'react-bootstrap/Container';
 import { Row, Col } from 'react-bootstrap';
+import Log from '../images/Log.jpg';
 
 export const SignUp = () => {
     return (
+        <div className="LogPages">
         <Row>
             <Col>
-                <img src='https://mdbootstrap.com/img/new/standard/city/044.webp' className='img-fluid shadow-4' alt='...' />
+                <img src={Log} alt="SignIn/SignUp" />
             </Col>
             <Col>
             <div className="Form">
                 <form>
                     <h3>Sign Up</h3>
                     <div className="mb-3">
-                    <label>First name</label>
+                    <label>Names</label>
                     <input
                         type="text"
                         className="form-control"
                         placeholder="First name"
                     />
-                    </div>
-                    <div className="mb-3">
-                    <label>Last name</label>
-                    <input type="text" className="form-control" placeholder="Last name" />
                     </div>
                     <div className="mb-3">
                     <label>Email address</label>
@@ -54,7 +49,7 @@ export const SignUp = () => {
             </div>
             </Col>     
         </Row>
-        
+        </div>
     );
 }
 

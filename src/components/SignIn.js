@@ -3,12 +3,13 @@ import Button from 'react-bootstrap/Button';
 import Form from 'react-bootstrap/Form';
 import Container from 'react-bootstrap/Container';
 import { Row, Col } from 'react-bootstrap';
-
+import Log from '../images/Log.jpg';
 export const SignIn = () => {
   return (
+    <div className="LogPages">
     <Row>
         <Col>
-            <img src='https://mdbootstrap.com/img/new/standard/city/044.webp' className='img-fluid shadow-4' alt='...' />
+            <img src={Log} alt="SignIn/SignUp" />
         </Col>
         <Col>
         <div className="Form">
@@ -54,6 +55,7 @@ export const SignIn = () => {
         </div>
         </Col>
     </Row>   
+    </div>
   );
 }
 
