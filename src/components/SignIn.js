@@ -5,6 +5,7 @@
 import React from 'react';
 import { Row, Col } from 'react-bootstrap';
 import Log from '../images/Log.jpg';
+import { BiLogInCircle } from "react-icons/bi";
 
 export const SignIn = () => {
   return (
@@ -23,6 +24,7 @@ export const SignIn = () => {
                         type="email"
                         className="form-control"
                         placeholder="Enter email"
+                        required
                     />
                 </div>
                 <div className="mb-3">
@@ -31,6 +33,7 @@ export const SignIn = () => {
                         type="password"
                         className="form-control"
                         placeholder="Enter password"
+                        required
                     />
                 </div>
                 <div className="mb-3">
@@ -47,7 +50,7 @@ export const SignIn = () => {
                 </div>
                 <div className="d-grid">
                     <button type="submit" className="btn btn-primary">
-                        Sign in
+                        Sign in <BiLogInCircle />
                     </button>
                 </div>
                 <p className="forgot-password text-right">

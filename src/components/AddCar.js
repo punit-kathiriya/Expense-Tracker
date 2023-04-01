@@ -4,6 +4,7 @@ import Row from 'react-bootstrap/Row';
 import Col from 'react-bootstrap/Col';
 import Button from 'react-bootstrap/Button';
 import Form from 'react-bootstrap/Form';
+import { CiCirclePlus } from "react-icons/ci";
 
 export const AddCars = () => {
     return (
@@ -33,7 +34,7 @@ export const AddCars = () => {
                     </Form.Group>
 
                     <Button variant="primary" type="submit">
-                        Add Car
+                        Add Car <CiCirclePlus />
                     </Button>
                 </Form>
             </Col>

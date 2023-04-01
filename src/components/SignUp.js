@@ -5,6 +5,7 @@
 import React from 'react';
 import { Row, Col } from 'react-bootstrap';
 import Log from '../images/Log.jpg';
+import { AiOutlineLogin } from "react-icons/ai";
 
 export const SignUp = () => {
     return (
@@ -23,6 +24,7 @@ export const SignUp = () => {
                         type="text"
                         className="form-control"
                         placeholder="First name"
+                        required
                     />
                     </div>
                     <div className="mb-3">
@@ -31,6 +33,7 @@ export const SignUp = () => {
                         type="email"
                         className="form-control"
                         placeholder="Enter email"
+                        required
                     />
                     </div>
                     <div className="mb-3">
@@ -39,11 +42,26 @@ export const SignUp = () => {
                         type="password"
                         className="form-control"
                         placeholder="Enter password"
+                        required
                     />
                     </div>
+                    <div className="mb-3">
+                        <div className="custom-control custom-checkbox">
+                            <input
+                            type="checkbox"
+                            className="custom-control-input"
+                            id="customCheck1"
+                            required
+                            />
+                            <label className="custom-control-label" id="check" htmlFor="customCheck1"> 
+                            <a href="#" >Accapt the tearms!</a>
+                            </label>
+                        </div>
+                    </div>
+                    
                     <div className="d-grid">
                     <button type="submit" className="btn btn-primary">
-                        Sign Up
+                        Sign Up <AiOutlineLogin />
                     </button>
                     </div>
                     <p className="forgot-password text-right">
