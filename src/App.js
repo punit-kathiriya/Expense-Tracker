@@ -8,7 +8,7 @@ import { SignUp } from './components/SignUp'
 import  AppNav  from './components/AppNav';
 import { API } from './apitest';
 import { Routes, Route } from 'react-router-dom';
-import { AddCars } from './components/AddCara';
+import { AddCar } from './components/AddCar';
 import { Container } from 'react-bootstrap';
 
 
@@ -25,7 +25,7 @@ function App() {
         <Route path="/signin" element={<SignIn />} />
         <Route path="/signup" element={<SignUp />} />
         <Route path="/api" element={<API />} />
-        <Route path="/cars/add" element={<AddCars />} />
+        <Route path="/cars/add" element={<AddCar />} />
         </Routes>
       </Container>
       
