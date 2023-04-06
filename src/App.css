@@ -17,6 +17,18 @@ body {
   box-shadow: rgba(21, 3, 123, 0.15) 0px 48px 100px 0px;
 }
 
+nav a {
+  color: #fff;
+  text-decoration: none;
+  margin: 0 20px;
+}
+
+nav a:hover {
+  color: #e0e0e0;
+  text-decoration: none;
+  margin-right: 20px;
+}
+
 #check {
   margin-left: 10px;
 }
