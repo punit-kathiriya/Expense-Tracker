@@ -6,7 +6,7 @@ import Card from 'react-bootstrap/Card';
 import { CiCircleMinus } from 'react-icons/ci';
 import { CiEdit } from 'react-icons/ci';
 import { CiCirclePlus } from 'react-icons/ci';
-import { useNavigate, useLocation } from 'react-router-dom';
+import { useLocation } from 'react-router-dom';
 
 export const Cars = () => {
   const location = useLocation();
