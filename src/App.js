@@ -8,7 +8,7 @@ import { SignUp } from './components/SignUp'
 import  AppNav  from './components/AppNav';
 import { API } from './apitest';
 import { Routes, Route } from 'react-router-dom';
-import { AddCars } from './components/AddCar';
+import { AddCars } from './components/AddCara';
 import { Container } from 'react-bootstrap';
 
 
