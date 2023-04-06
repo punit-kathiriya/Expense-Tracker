@@ -40,8 +40,10 @@ export const Cars = () => {
                   <Row>
                     <Col xs={12} md={8}>
                       <Card.Title className='header-side'>
-                        <h2 className='mb-2'>{car.carName}</h2>
-                        {car.carManufacture}
+                        <h2 className='mb-2'>Name: {car.carName}</h2>
+                        <h5>Manufacture: {car.carManufacture}<br></br>
+                        Fuel Capacity: {car.fuelCapacity}<br></br>
+                        Car Battery: {car.carBattery}%</h5>
                       </Card.Title>
                     </Col>
                     <Col xs={12} md={4}>
