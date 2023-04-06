@@ -13,9 +13,14 @@ export const AddCar = () => {
   const [carBattery, setCarBattery] = useState(0);
   const [isElectric, setIsElectric] = useState(false);
   const navigate = useNavigate();
+  
 
   const handleSubmit = (event) => {
     event.preventDefault();
+    if (!carName || !carManufacture || fuelCapacity <= 0 || carBattery <= 0) {
+      alert('Please fill in all the required fields with valid data.');
+      return;
+    }
     const formData = { carName, carManufacture, fuelCapacity, carBattery, isElectric };
     navigate('/cars', { state: formData });
   };
