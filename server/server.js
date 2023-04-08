@@ -1,3 +1,7 @@
+// File name: server.js
+// Auth: Terminal Swag Disorder
+// Desc: File containing code for database connectivity
+
 const express = require('express');
 const sqlite3 = require('sqlite3').verbose();
 const cors = require('cors');
