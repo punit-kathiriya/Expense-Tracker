@@ -1,8 +1,14 @@
+// File name: api.js
+// Auth: Terminal Swag Disorder
+// Desc: File containing code for user api functionality
+
 import React, { useEffect, useState } from 'react';
 import ReactDOM from 'react-dom';
 import './index.css';
 import reportWebVitals from './reportWebVitals';
-import { BrowserRouter } from 'react-router-dom';
+import { BrowserRouter, useLocation } from 'react-router-dom';
+import { SignUp } from './components/SignUp';
+
 
 function API() {
   const [users, setUsers] = useState([]);
@@ -26,21 +32,22 @@ function API() {
       .catch(console.error);
   }, []);
 
-  const handleAddUser = () => {
-    const Name = prompt('Enter name:');
-    const Email = prompt('Enter email:');
-    const Password = prompt('Enter password:');
-	if (Name && Email && Password) {
-	  fetch('http://localhost:4000/api/users', {
-		method: 'POST',
-		headers: { 'Content-Type': 'application/json' },
-		body: JSON.stringify({ Name, Email, Password }),
-	  })
-		.then(response => response.json())
-		.then(data => setUsers([...users, { ID: data.id, Name, Email, Password }]))
-		.catch(console.error);
-	}
-  };
+const handleAddUser = (event) => {
+  const Name = event.target.name.value;
+  const Email = event.target.email.value;
+  const Password = event.target.password.value;
+  if (Name && Email && Password) {
+    fetch('http://localhost:4000/api/users', {
+      method: 'POST',
+      headers: { 'Content-Type': 'application/json' },
+      body: JSON.stringify({ Name, Email, Password }),
+    })
+      .then(response => response.json())
+      .then(data => setUsers([...users, { ID: data.id, Name, Email, Password }]))
+      .catch(console.error);
+  }
+};
+
 	
 	
 const handleAddCar = () => {
@@ -91,82 +98,11 @@ const handleAddCar = () => {
     }
   };
 	
+const location = useLocation();
 
   return (
     <div>
-      <h1>React Web Service with SQLite</h1>
-      <button onClick={handleAddUser}>Add User</button>
-      <button onClick={handleAddCar}>Add Car</button>
-      <button onClick={handleAddPrice}>Add Mileage Price</button>
-	  <h2>Users</h2>
-      <table>
-        <thead>
-          <tr>
-            <th>ID</th>
-            <th>Name</th>
-          </tr>
-        </thead>
-        <tbody>
-          {users.map(user => (
-            <tr key={user.ID}>
-              <td>{user.ID}</td>
-              <td>{user.Name}</td>
-              <td>{user.Email}</td>
-              <td>{user.Password}</td>
-            </tr>
-          ))}
-        </tbody>
-      </table>
-  <h2>Cars</h2>
-  <table>
-    <thead>
-      <tr>
-        <th>ID</th>
-        <th>UID</th>
-        <th>Manufacturer</th>
-        <th>Model</th>
-        <th>Tank</th>
-        <th>Battery</th>
-        <th>Is Electric</th>
-      </tr>
-    </thead>
-    <tbody>
-      {cars.map(car => (
-        <tr key={car.UID}>
-          <td>{car.ID}</td>
-          <td>{car.UID}</td>
-          <td>{car.Manufacturer}</td>
-          <td>{car.Model}</td>
-          <td>{car.Tank}</td>
-          <td>{car.Battery}</td>
-          <td>{car.Is_Electric}</td>
-        </tr>
-      ))}
-    </tbody>
-  </table>
-  <h2>Prices</h2>
-  <table>
-    <thead>
-      <tr>
-        <th>ID</th>
-        <th>CID</th>
-        <th>Total filled</th>
-        <th>Total price</th>
-        <th>Total distance</th>
-      </tr>
-    </thead>
-    <tbody>
-      {prices.map(price => (
-        <tr key={price.ID}>
-          <td>{price.ID}</td>
-          <td>{price.CID}</td>
-          <td>{price.Total_filled}</td>
-          <td>{price.Total_price}</td>
-          <td>{price.Total_distance}</td>
-        </tr>
-      ))}
-    </tbody>
-  </table>
+      {location.pathname === '/signup' && <SignUp onSubmit={handleAddUser} />}
 
     </div>
   );
@@ -181,6 +117,15 @@ ReactDOM.render(
   document.getElementById('root')
 );
 
+function APISignUp() {
+  return (
+    <API>
+      {(onSubmit) => <SignUp onSubmit={onSubmit} />}
+    </API>
+
+  );
+}
+
 reportWebVitals();
 
-export { API };
+export { API, APISignUp};
