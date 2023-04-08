@@ -20,7 +20,7 @@ def create_database():
 	if not finPath.exists():
 		finPath.mkdir()
 
-	engine = create_engine("sqlite:///" + str(finPath.joinpath("expense_tracker.db")), echo=True, pool_pre_ping=True)
+	engine = create_engine("sqlite:///" + str(finPath.joinpath("expense_data.db")), echo=True, pool_pre_ping=True)
 	Session = sessionmaker(bind=engine)
 	session = Session()
 
