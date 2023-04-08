@@ -25,9 +25,9 @@ api.get('/api/users', (req, res) => {
 });
 
 api.post('/api/users', (req, res) => {
-  const { Name } = req.body;
-  const sql = 'INSERT INTO user (Name) VALUES (?)';
-  db.run(sql, [Name], function (err) {
+  const { Name, Email, Password } = req.body;
+  const sql = 'INSERT INTO user (Name, Email, Password) VALUES (?, ?, ?)';
+  db.run(sql, [Name, Email, Password], function (err) {
     if (err) {
       console.error(err);
       res.status(500).send(err);
@@ -36,6 +36,57 @@ api.post('/api/users', (req, res) => {
     }
   });
 });
+
+api.get('/api/cars', (req, res) => {
+  const sql = 'SELECT * FROM car';
+  db.all(sql, [], (err, rows) => {
+    if (err) {
+      console.error(err);
+      res.status(500).send(err);
+    } else {
+      res.send(rows);
+    }
+  });
+});
+
+api.post('/api/cars', (req, res) => {
+  const { UID, Manufacturer, Model, Tank, Battery, Is_Electric } = req.body;
+  const sql = 'INSERT INTO car (UID, Manufacturer, Model, Tank, Battery, Is_Electric) VALUES (?, ?, ?, ?, ?, ?)';
+  db.run(sql, [UID, Manufacturer, Model, Tank, Battery, Is_Electric], function (err) {
+    if (err) {
+      console.error(err);
+      res.status(500).send(err);
+    } else {
+      res.send({ id: this.lastID });
+    }
+  });
+});
+
+api.get('/api/mileage_prices', (req, res) => {
+  const sql = 'SELECT * FROM prices';
+  db.all(sql, [], (err, rows) => {
+    if (err) {
+      console.error(err);
+      res.status(500).send(err);
+    } else {
+      res.send(rows);
+    }
+  });
+});
+
+api.post('/api/mileage_prices', (req, res) => {
+  const { CID, Total_filled, Total_price, Total_distance } = req.body;
+  const sql = 'INSERT INTO prices (CID, Total_filled, Total_price, Total_distance) VALUES (?, ?, ?, ?)';
+  db.run(sql, [CID, Total_filled, Total_price, Total_distance], function (err) {
+    if (err) {
+      console.error(err);
+      res.status(500).send(err);
+    } else {
+      res.send({ id: this.lastID });
+    }
+  });
+});
+
 
 api.listen(port, () => {
   console.log(`Server listening at http://localhost:${port}`);
