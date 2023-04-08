@@ -81,21 +81,18 @@ def add_data():
 		i = insert(User).values(data)
 		session.execute(i)
 
-	session.commit()
-
 
 	cars = [
-		{"UID": 1, "Manufacturer": "Toyota", "Model": "Corolla", "Tank": 50, "Battery": 0, "Is_Electric": False},
-		{"UID": 2, "Manufacturer": "Honda", "Model": "Civic", "Tank": 45, "Battery": 0, "Is_Electric": False},
-		{"UID": 3, "Manufacturer": "Tesla", "Model": "Model S", "Tank": 0, "Battery": 100, "Is_Electric": True},
-		{"UID": 3, "Manufacturer": "Super", "Model": "Car", "Tank": 100, "Battery": 0, "Is_Electric": False}
+		{"UID": 1, "Manufacturer": "Toyota", "Model": "Corolla", "Tank": 50, "Battery": None, "Is_Electric": False},
+		{"UID": 2, "Manufacturer": "Honda", "Model": "Civic", "Tank": 45, "Battery": None, "Is_Electric": False},
+		{"UID": 3, "Manufacturer": "Tesla", "Model": "Model S", "Tank": None, "Battery": 100, "Is_Electric": True},
+		{"UID": 3, "Manufacturer": "Super", "Model": "Car", "Tank": 100, "Battery": None, "Is_Electric": False}
 	]
 
 	for data in cars:
 		i = insert(Car).values(data)
 		session.execute(i)
 
-	session.commit()
 
 	mileage_prices = [
 		{"CID": 1, "Total_filled": 30, "Total_price": 50, "Total_distance": 500},
