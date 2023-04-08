@@ -1,13 +1,21 @@
 // File name: SignUp.js
-// Auth: Sami Wazni
+// Auth: Sami Wazni/Terminal Swag Disorder
 // Desc: File currently in development containing code for user sign up
 
 import React from 'react';
 import { Row, Col } from 'react-bootstrap';
 import Log from '../images/Log.jpg';
 import { AiOutlineLogin } from "react-icons/ai";
+import { useNavigate } from 'react-router-dom';
 
-export const SignUp = () => {
+
+export const SignUp = ({ onSubmit }) => {
+	const navigate = useNavigate();
+
+    const handleSubmit = (event) => {
+        onSubmit(event);
+		navigate('/signin');
+    };
     return (
         <div className="LogPages">
         <Row>
@@ -16,15 +24,17 @@ export const SignUp = () => {
             </Col>
             <Col>
             <div className="Form">
-                <form>
+                <form onSubmit={handleSubmit}>
                     <h3>Sign Up</h3>
                     <div className="mb-3">
-                    <label>Names</label>
+                    <label>Username</label>
                     <input
                         type="text"
                         className="form-control"
-                        placeholder="First name"
+                        placeholder="Name"
                         required
+						name="name"
+
                     />
                     </div>
                     <div className="mb-3">
@@ -34,6 +44,8 @@ export const SignUp = () => {
                         className="form-control"
                         placeholder="Enter email"
                         required
+						name="email"
+
                     />
                     </div>
                     <div className="mb-3">
@@ -43,6 +55,8 @@ export const SignUp = () => {
                         className="form-control"
                         placeholder="Enter password"
                         required
+						name="password"
+
                     />
                     </div>
                     <div className="mb-3">
@@ -54,13 +68,13 @@ export const SignUp = () => {
                             required
                             />
                             <label className="custom-control-label" id="check" htmlFor="customCheck1"> 
-                            <a href="#" >Accapt the tearms!</a>
+                            <a href="#" >Accept the terms.</a>
                             </label>
                         </div>
                     </div>
                     
                     <div className="d-grid">
-                    <button type="submit" className="btn btn-primary">
+                      <button type="submit" className="btn btn-primary">
                         Sign Up <AiOutlineLogin />
                     </button>
                     </div>
