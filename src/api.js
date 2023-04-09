@@ -6,31 +6,65 @@ import React, { useEffect, useState } from 'react';
 import ReactDOM from 'react-dom';
 import './index.css';
 import reportWebVitals from './reportWebVitals';
-import { BrowserRouter, useLocation } from 'react-router-dom';
+import { BrowserRouter, useLocation, useNavigate } from 'react-router-dom';
 import { SignUp } from './components/SignUp';
+import { SignIn } from './components/SignIn';
+import { AppNav } from './components/AppNav';
 
 
 function API() {
   const [users, setUsers] = useState([]);
   const [cars, setCars] = useState([]);
   const [prices, setPrices] = useState([]);
+  const [currentUser, setCurrentUser] = useState(null);
+
 
   useEffect(() => {
+    fetchUserData();
+    fetchCarData();
+    fetchPriceData();
+    fetchCurrentUser();
+
+  }, []);
+	
+    // Fetch user data
+  const fetchUserData = () => {
     fetch('http://localhost:4000/api/users')
       .then(response => response.json())
       .then(data => setUsers(data))
       .catch(console.error);
-
+  };
+    // Fetch car data
+  const fetchCarData = () => {
     fetch('http://localhost:4000/api/cars')
       .then(response => response.json())
       .then(data => setCars(data))
       .catch(console.error);
-
+  };
+  
+    // Fetch mileage price data
+  const fetchPriceData = () => {
     fetch('http://localhost:4000/api/mileage_prices')
       .then(response => response.json())
       .then(data => setPrices(data))
       .catch(console.error);
-  }, []);
+  };
+	
+const getCurrentUserId = () => {
+  return localStorage.getItem('currentUserId');
+};
+	
+const fetchCurrentUser = (props) => {
+  fetch(`http://localhost:4000/api/users/${getCurrentUserId()}`)
+    .then(response => response.json())
+    .then(data => {
+      setCurrentUser(data);
+      // Call onUserChange with the fetched user data
+      props.onUserChange(data);
+    })
+    .catch(console.error);
+};
+
 
 const handleAddUser = (event) => {
   const Name = event.target.name.value;
@@ -48,7 +82,6 @@ const handleAddUser = (event) => {
   }
 };
 
-	
 	
 const handleAddCar = () => {
   const UID = prompt('Enter UID:');
@@ -81,7 +114,7 @@ const handleAddCar = () => {
 
 
 
-  const handleAddPrice = () => {
+const handleAddPrice = () => {
     const CID = prompt('Enter CID:');
     const Total_filled = prompt('Enter Total Filled:');
     const Total_price = prompt('Enter Total Price:');
@@ -97,15 +130,51 @@ const handleAddCar = () => {
         .catch(console.error);
     }
   };
+
+const navigate = useNavigate();
+
+
+const handleCheckUser = (event) => {
+  const Email = event.target.email.value;
+  const Password = event.target.password.value;
+  if (Email && Password) {
+    fetchUser(Email, Password)
+      .then(data => {
+        if (data.length > 0) {
+          localStorage.setItem('currentUserId', data[0].ID);
+          fetchCurrentUser();
+          navigate('/');
+        } else {
+          alert('Invalid email or password');
+        }
+      })
+      .catch(console.error);
+  }
+};
+
+
 	
+const fetchUser = (email, password) => {
+  return fetch(`http://localhost:4000/api/users?Email=${encodeURIComponent(email)}&Password=${encodeURIComponent(password)}`)
+      .then(response => response.json());
+  };
+		
+
+const handleSignOut = () => {
+  localStorage.removeItem('currentUserId');
+  setCurrentUser(null);
+};
+
 const location = useLocation();
 
-  return (
-    <div>
-      {location.pathname === '/signup' && <SignUp onSubmit={handleAddUser} />}
+return (
+  <div>
+    {currentUser && <AppNav currentUser={currentUser} onSignOut={handleSignOut} />}
+    {location.pathname === '/signup' && <SignUp onSubmit={handleAddUser} />}
+    {location.pathname === '/signin' && <SignIn onSubmit={handleCheckUser} />}
+  </div>
+);
 
-    </div>
-  );
 }
 
 ReactDOM.render(
@@ -117,15 +186,23 @@ ReactDOM.render(
   document.getElementById('root')
 );
 
-function APISignUp() {
+function APISignUp(props) {
   return (
-    <API>
+    <API onUserChange={props.onUserChange}>
       {(onSubmit) => <SignUp onSubmit={onSubmit} />}
     </API>
-
   );
 }
 
+function APISignIn(props) {
+  return (
+    <API onUserChange={props.onUserChange}>
+      {(onSubmit) => <SignIn onSubmit={onSubmit} />}
+    </API>
+  );
+}
+
+
 reportWebVitals();
 
-export { API, APISignUp};
+export { API, APISignUp, APISignIn };

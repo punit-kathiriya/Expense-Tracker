@@ -4,11 +4,11 @@ import Nav from 'react-bootstrap/Nav';
 import Navbar from 'react-bootstrap/Navbar';
 import { Link } from "react-router-dom"
 
-export const AppNav = () => {
+export const AppNav = ({ currentUser, onSignOut }) => {
   return (
     <Navbar expand="lg" bg="dark" variant="dark">
       <Container>
-        <Navbar.Brand  to="/">Expense Tracker App</Navbar.Brand>
+        <Navbar.Brand to="/">Expense Tracker App</Navbar.Brand>
         <Navbar.Toggle aria-controls="responsive-navbar-nav" />
         <Navbar.Collapse id="responsive-navbar-nav">
           <Nav className="me-auto">
@@ -17,14 +17,23 @@ export const AppNav = () => {
             <Link to="/cars">Cars</Link>
           </Nav>
           <Nav>
-            <Link to="/signin">Sign In</Link>
-            <Link to="/signup">Sign Up</Link>
+            {currentUser ? (
+              <>
+                <span className="navbar-text">{currentUser.Name}</span>
+                <Link to="/" onClick={onSignOut}>Sign Out</Link>
+              </>
+            ) : (
+              <>
+                <Link to="/signin">Sign In</Link>
+                <Link to="/signup">Sign Up</Link>
+              </>
+            )}
           </Nav>
         </Navbar.Collapse>
       </Container>
     </Navbar>
   );
-}
+};
+
 
 export default AppNav;
-

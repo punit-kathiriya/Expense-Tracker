@@ -16,6 +16,7 @@ export const SignUp = ({ onSubmit }) => {
         onSubmit(event);
 		navigate('/signin');
     };
+	
     return (
         <div className="LogPages">
         <Row>

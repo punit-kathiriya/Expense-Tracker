@@ -6,8 +6,18 @@ import React from 'react';
 import { Row, Col } from 'react-bootstrap';
 import Log from '../images/Log.jpg';
 import { BiLogInCircle } from "react-icons/bi";
+import { useNavigate } from 'react-router-dom';
 
-export const SignIn = () => {
+
+export const SignIn = ({ onSubmit }) => {
+	const navigate = useNavigate();
+
+    const handleSubmit = (event) => {
+		event.preventDefault();
+        onSubmit(event);
+		navigate('/');
+    };
+	
   return (
     <div className="LogPages">
     <Row>
@@ -16,7 +26,7 @@ export const SignIn = () => {
         </Col>
         <Col>
         <div className="Form">
-            <form>
+                <form onSubmit={handleSubmit}>
                 <h3>Sign In</h3>
                 <div className="mb-3">
                     <label>Email address</label>
@@ -25,6 +35,7 @@ export const SignIn = () => {
                         className="form-control"
                         placeholder="Enter email"
                         required
+	  					name="email"
                     />
                 </div>
                 <div className="mb-3">
@@ -34,6 +45,7 @@ export const SignIn = () => {
                         className="form-control"
                         placeholder="Enter password"
                         required
+	  					name="password"
                     />
                 </div>
                 <div className="mb-3">
