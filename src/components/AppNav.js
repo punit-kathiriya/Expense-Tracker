@@ -5,6 +5,10 @@ import Navbar from 'react-bootstrap/Navbar';
 import { Link } from "react-router-dom"
 
 export const AppNav = ({ currentUser, onSignOut }) => {
+	
+	if (currentUser) {
+	console.log("appnav.js:", currentUser)
+	}
   return (
     <Navbar expand="lg" bg="dark" variant="dark">
       <Container>
@@ -17,12 +21,13 @@ export const AppNav = ({ currentUser, onSignOut }) => {
             <Link to="/cars">Cars</Link>
           </Nav>
           <Nav>
-            {currentUser ? (
+            {currentUser && (
               <>
                 <span className="navbar-text">{currentUser.Name}</span>
                 <Link to="/" onClick={onSignOut}>Sign Out</Link>
               </>
-            ) : (
+            )}
+            {!currentUser && (
               <>
                 <Link to="/signin">Sign In</Link>
                 <Link to="/signup">Sign Up</Link>

@@ -1,28 +1,30 @@
-import React, { useState} from 'react';
+import React, { useState } from 'react';
 import './App.css';
+import { Routes, Route } from 'react-router-dom';
+import { API, APISignUp, APISignIn } from './api';
+import  AppNav  from './components/AppNav';
+import { SignIn } from './components/SignIn'
+import { SignUp } from './components/SignUp'
 import { Home } from './components/Home';
 import { Main } from './components/Main';
 import { Cars } from './components/Cars';
-import { SignIn } from './components/SignIn'
-import { SignUp } from './components/SignUp'
-import  AppNav  from './components/AppNav';
-import { API, APISignUp, APISignIn } from './api';
-import { Routes, Route } from 'react-router-dom';
 import { AddCar } from './components/AddCar';
 import { Container } from 'react-bootstrap';
 
 
 
-function App() {
-  const [user, setUser] = useState(null);
+function App({ currentUser, setCurrentUser }) {
+
 	
-  const handleUserChange = (currentUser) => {
-    setUser(currentUser);
-  };
+  const handleUserChange = (event) => {
+    setCurrentUser(event);
+    };
+	
+  console.log("app.js", currentUser)
 
   return (
     <div className="App">
-      <AppNav user={user} />
+      <AppNav currentUser={currentUser} />
 	  
       <Container className="">
         <Routes>
@@ -39,5 +41,6 @@ function App() {
     </div>
   );
 }
+
 
 export default App;

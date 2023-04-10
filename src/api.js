@@ -12,7 +12,7 @@ import { SignIn } from './components/SignIn';
 import { AppNav } from './components/AppNav';
 
 
-function API() {
+function API({ onUserChange }) {
   const [users, setUsers] = useState([]);
   const [cars, setCars] = useState([]);
   const [prices, setPrices] = useState([]);
@@ -61,6 +61,7 @@ const fetchCurrentUser = (props) => {
       setCurrentUser(data);
       // Call onUserChange with the fetched user data
       props.onUserChange(data);
+	  console.log("fetchCurrentUser:", data)
     })
     .catch(console.error);
 };
@@ -134,24 +135,22 @@ const handleAddPrice = () => {
 const navigate = useNavigate();
 
 
-const handleCheckUser = (event) => {
-  const Email = event.target.email.value;
-  const Password = event.target.password.value;
-  if (Email && Password) {
-    fetchUser(Email, Password)
-      .then(data => {
-        if (data.length > 0) {
-          localStorage.setItem('currentUserId', data[0].ID);
-          fetchCurrentUser();
-          navigate('/');
-        } else {
-          alert('Invalid email or password');
-        }
-      })
-      .catch(console.error);
-  }
-};
+const handleCheckUser = (user) => {
+  return new Promise((resolve, reject) => {
+    const foundUser = users.find(
+      (u) => u.Email === user.Email && u.Password === user.Password
+    );
 
+    if (foundUser) {
+      setCurrentUser(foundUser);
+      localStorage.setItem("currentUserId", foundUser.Id);
+      resolve(foundUser);
+	  console.log(foundUser)
+    } else {
+      reject("Invalid email or password1");
+    }
+  });
+};
 
 	
 const fetchUser = (email, password) => {
@@ -196,8 +195,17 @@ function APISignUp(props) {
 
 function APISignIn(props) {
   return (
-    <API onUserChange={props.onUserChange}>
+    <API {...props}>
       {(onSubmit) => <SignIn onSubmit={onSubmit} />}
+    </API>
+  );
+}
+
+
+function APINav(props) {
+  return (
+    <API {...props}> 
+      {(onSignOut) => <AppNav onSignOut={onSignOut} />}
     </API>
   );
 }
