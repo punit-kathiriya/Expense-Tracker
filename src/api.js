@@ -23,7 +23,6 @@ function API({ onUserChange }) {
     fetchUserData();
     fetchCarData();
     fetchPriceData();
-    fetchCurrentUser();
 
   }, []);
 	
@@ -49,23 +48,6 @@ function API({ onUserChange }) {
       .then(data => setPrices(data))
       .catch(console.error);
   };
-	
-const getCurrentUserId = () => {
-  return localStorage.getItem('currentUserId');
-};
-	
-const fetchCurrentUser = (props) => {
-  fetch(`http://localhost:4000/api/users/${getCurrentUserId()}`)
-    .then(response => response.json())
-    .then(data => {
-      setCurrentUser(data);
-      // Call onUserChange with the fetched user data
-      props.onUserChange(data);
-	  console.log("fetchCurrentUser:", data)
-    })
-    .catch(console.error);
-};
-
 
 const handleAddUser = (event) => {
   const Name = event.target.name.value;
@@ -111,8 +93,6 @@ const handleAddCar = () => {
       .catch(console.error);
   }
 };
-
-
 
 
 const handleAddPrice = () => {
@@ -162,28 +142,19 @@ const fetchUser = (email, password) => {
 const handleSignOut = () => {
   localStorage.removeItem('currentUserId');
   setCurrentUser(null);
+  console.log("Signout user:", currentUser)
 };
 
 const location = useLocation();
 
-return (
-  <div>
-    {currentUser && <AppNav currentUser={currentUser} onSignOut={handleSignOut} />}
-    {location.pathname === '/signup' && <SignUp onSubmit={handleAddUser} />}
-    {location.pathname === '/signin' && <SignIn onSubmit={handleCheckUser} />}
-  </div>
-);
-
+  return (
+    <div>
+      {currentUser && <AppNav currentUser={currentUser} onSignOut={handleSignOut} />}
+      {location.pathname === '/signup' && <SignUp onSubmit={handleAddUser} />}
+      {location.pathname === '/signin' && <SignIn currentUser={currentUser} onSubmit={handleCheckUser} />}
+    </div>
+  );
 }
-
-ReactDOM.render(
-  <React.StrictMode>
-    <BrowserRouter>
-      <API />
-    </BrowserRouter>
-  </React.StrictMode>,
-  document.getElementById('root')
-);
 
 function APISignUp(props) {
   return (
@@ -200,16 +171,6 @@ function APISignIn(props) {
     </API>
   );
 }
-
-
-function APINav(props) {
-  return (
-    <API {...props}> 
-      {(onSignOut) => <AppNav onSignOut={onSignOut} />}
-    </API>
-  );
-}
-
 
 reportWebVitals();
 

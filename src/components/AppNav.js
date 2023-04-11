@@ -1,13 +1,22 @@
-import React from 'react';
+import React, { useEffect, useState } from 'react';
 import Container from 'react-bootstrap/Container';
 import Nav from 'react-bootstrap/Nav';
 import Navbar from 'react-bootstrap/Navbar';
 import { Link } from "react-router-dom"
 
 export const AppNav = ({ currentUser, onSignOut }) => {
+  const [foundUser, setFoundUser] = useState(currentUser);
+
+  useEffect(() => {
+    setFoundUser(currentUser);
+  }, [currentUser]);
+
+  console.log("appnav founduser:", foundUser);
 	
-	if (currentUser) {
+	
+  if (currentUser) {
 	console.log("appnav.js:", currentUser)
+	console.log("appnav.js name:", currentUser.Name)
 	}
   return (
     <Navbar expand="lg" bg="dark" variant="dark">
@@ -21,13 +30,12 @@ export const AppNav = ({ currentUser, onSignOut }) => {
             <Link to="/cars">Cars</Link>
           </Nav>
           <Nav>
-            {currentUser && (
+            {currentUser ? (
               <>
                 <span className="navbar-text">{currentUser.Name}</span>
-                <Link to="/" onClick={onSignOut}>Sign Out</Link>
+                <Link to="/signin" onClick={onSignOut}>Sign Out</Link>
               </>
-            )}
-            {!currentUser && (
+            ) : (
               <>
                 <Link to="/signin">Sign In</Link>
                 <Link to="/signup">Sign Up</Link>

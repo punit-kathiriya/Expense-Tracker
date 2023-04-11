@@ -8,7 +8,7 @@ import Log from '../images/Log.jpg';
 import { BiLogInCircle } from "react-icons/bi";
 import { useNavigate } from 'react-router-dom';
 
-export const SignIn = ({ onSubmit }) => {
+export const SignIn = ({ onSubmit, currentUser }) => {
   const [email, setEmail] = useState('');
   const [password, setPassword] = useState('');
   const navigate = useNavigate();
@@ -22,7 +22,7 @@ export const SignIn = ({ onSubmit }) => {
 
     onSubmit(user)
       .then((foundUser) => {
-        navigate("/");
+        // navigate("/");
       })
       .catch((error) => {
         alert("Wrong email or password2")
@@ -30,6 +30,7 @@ export const SignIn = ({ onSubmit }) => {
         // You can also update the component state to show an error message to the user.
       });
   };
+	console.log("si:", currentUser)
   
   return (
     <div className="LogPages">
