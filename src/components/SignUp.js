@@ -6,11 +6,8 @@ import React from 'react';
 import { Row, Col } from 'react-bootstrap';
 import Log from '../images/Log.jpg';
 import { AiOutlineLogin } from "react-icons/ai";
-<<<<<<< HEAD
 import '../App.css';
-=======
 import { useNavigate } from 'react-router-dom';
->>>>>>> 6fb8f8be95548c24d72c38753f813100fb7c2ed1
 
 
 export const SignUp = ({ onSubmit }) => {
@@ -75,11 +72,7 @@ export const SignUp = ({ onSubmit }) => {
                             required
                             />
                             <label className="custom-control-label" id="check" htmlFor="customCheck1"> 
-<<<<<<< HEAD
                             <a href="#" >Accept terms!</a>
-=======
-                            <a href="#" >Accept the terms.</a>
->>>>>>> 6fb8f8be95548c24d72c38753f813100fb7c2ed1
                             </label>
                         </div>
                     </div>

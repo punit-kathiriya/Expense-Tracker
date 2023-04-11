@@ -6,11 +6,8 @@ import React, { useState } from 'react';
 import { Row, Col } from 'react-bootstrap';
 import Log from '../images/Log.jpg';
 import { BiLogInCircle } from "react-icons/bi";
-<<<<<<< HEAD
 import '../App.css';
-=======
 import { useNavigate } from 'react-router-dom';
->>>>>>> 6fb8f8be95548c24d72c38753f813100fb7c2ed1
 
 export const SignIn = ({ onSubmit, currentUser }) => {
   const [email, setEmail] = useState('');
@@ -40,13 +37,9 @@ export const SignIn = ({ onSubmit, currentUser }) => {
     <div className="LogPages">
       <Row>
         <Col>
-<<<<<<< HEAD
         <div className='image-container'>
             <img src={Log} alt="..." className= 'login-page-image'/>
         </div>
-=======
-          <img src={Log} alt="..." />
->>>>>>> 6fb8f8be95548c24d72c38753f813100fb7c2ed1
         </Col>
         <Col>
           <div className="Form">

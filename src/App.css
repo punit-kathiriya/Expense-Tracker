@@ -27,9 +27,6 @@ body {
   box-shadow: 0 48px 100px rgba(21, 3, 123, 0.15);
 }
 
-<<<<<<< HEAD
-.auth-form-inner {
-=======
 nav a {
   color: #fff;
   text-decoration: none;
@@ -54,7 +51,6 @@ nav a:hover {
 }
 
 .auth-inner {
->>>>>>> 6fb8f8be95548c24d72c38753f813100fb7c2ed1
   width: 450px;
   margin: auto;
   background-color: #ffffff;
@@ -94,7 +90,6 @@ nav a:hover {
   color: var(--primary-color);
 }
 
-<<<<<<< HEAD
 .login-page {
   display: flex;
   align-items: center;
@@ -113,14 +108,4 @@ nav a:hover {
   max-width: 100%;
   max-height: 100%;
   object-fit: contain;
-=======
-.LogPages img{
-  width: 100%;
-  margin-top: 40px;
-}
-
-.FormSmallText {
-  display: flex;
-  justify-content: space-between;
->>>>>>> 6fb8f8be95548c24d72c38753f813100fb7c2ed1
 }
