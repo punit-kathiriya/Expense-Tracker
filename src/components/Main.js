@@ -5,10 +5,11 @@ import Col from 'react-bootstrap/Col';
 import Button from 'react-bootstrap/Button';
 import Form from 'react-bootstrap/Form';
 import Card from 'react-bootstrap/Card';
+import { CiCirclePlus } from "react-icons/ci";
 
 export const Main = () => {
   return (
-    <Container>
+    <>
       <Row className='mt-5'>
         <Col xs={12} md={12}>
           <Card>
@@ -22,7 +23,7 @@ export const Main = () => {
         </Col>
       </Row>
       <Row>
-        <Col className='mt-5 expense-data' xs={12} md={12}>
+        <Col className='mt-5 expense-data' >
           <h2>Add Expense</h2>
           <Form>
             <Form.Group className="mb-3" controlId="formBasic">
@@ -48,13 +49,16 @@ export const Main = () => {
             </Form.Group>
 
             <Button variant="primary" type="submit">
-              Submit
+              Add Expense <CiCirclePlus />
             </Button>
           </Form>
         </Col>
-      </Row>
-    </Container>
 
+        <Col xs lg="5">
+            
+        </Col>
+      </Row>
+    </>
   );
 };
 

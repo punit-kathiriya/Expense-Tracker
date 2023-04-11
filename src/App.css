@@ -1,22 +1,53 @@
-body { 
-  margin: 0;
-  padding: 0;
-  /* background: #ffffff;
-  display: block;
-  margin: 0 auto; */
-  /* border-top-right-radius: 100px #000;
-  border-left: 100px #000 solid;
-  border-right: 100px #000 solid; */
+:root {
+  --primary-color: #167bff;
+  --background-color: #f1f1f1;
+  --font-size-small: 13px;
+  --font-size-medium: 16px;
 }
 
-button {
-  padding: 10px 30px;
-  border: none;
+* {
+  margin: 0;
+  padding: 0;
+  box-sizing: border-box;
+}
+
+body {
+  background-color: var(--background-color);
+}
+
+.Form {
+  margin-top: 50px;
+}
+
+.auth-form {
+  background-color: #f5f4f4;
+  padding: 100px 50px;
+  margin: 100px 50px;
   border-radius: 5px;
-  background: #120346;
+  box-shadow: 0 48px 100px rgba(21, 3, 123, 0.15);
+}
+
+nav a {
   color: #fff;
-  margin: 10px;
-  cursor: pointer;
+  text-decoration: none;
+  margin: 0 20px;
+}
+
+nav a:hover {
+  color: #e0e0e0;
+  text-decoration: none;
+  margin-right: 20px;
+}
+
+#check {
+  margin-left: 10px;
+}
+
+.auth-wrapper {
+  display: flex;
+  justify-content: center;
+  flex-direction: column;
+  text-align: left;
 }
 
 .App-HomePage {
@@ -38,32 +69,40 @@ button {
 }
 
 
-.Input {
-  width: 350px;
-  padding: 10px;
-  border: 1px solid #d1d0d0;
-  border-radius: 5px;
+.auth-inner {
+  width: 450px;
+  margin: auto;
+  background-color: #ffffff;
+  box-shadow: 0 14px 80px rgba(34, 35, 58, 0.2);
+  padding: 40px 55px 45px;
+  border-radius: 15px;
+  transition: all .3s;
 }
 
-.App {
+.auth-form-title {
   text-align: center;
-  width: 1000px;
-  margin: 0 auto;
+  margin: 0;
+  line-height: 1;
+  padding-bottom: 20px;
+  font-size: var(--font-size-medium);
 }
 
-/* Header styling */
-.Nabbar {
-  right: 0;
-  top: 0;
-  width: 100%;
-  align-items: center;
+.auth-form-label {
+  font-weight: 400;
 }
 
-.Navlist {
-  display: flex;
-  margin: 0 auto;
-  list-style: none;
+.auth-form-control:focus {
+  border-color: var(--primary-color);
+  box-shadow: none;
+}
+
+.forgot-password,
+.forgot-password a {
+  text-align: right;
+  font-size: var(--font-size-small);
   padding-top: 10px;
+  color: #7f7d7d;
+  margin: 0;
 }
 
 .Navlist a, .LogSystem a {
@@ -74,15 +113,20 @@ button {
   border-bottom: 2px solid transparent;
   transition: all .55s ease;
   text-decoration: none;
-
+  margin: 0 20px;
 }
 
-.Navlist a:hover, .LogSystem a:hover{
-  border-bottom: 1px solid blueviolet;
-  padding-bottom: 5px;
+nav a:hover {
+  color: #e0e0e0;
+  text-decoration: none;
+  margin-right: 20px;
 }
 
-.LogSystem {
+#check {
+  margin-left: 10px;
+}
+
+.auth-wrapper {
   display: flex;
   position: absolute;
   left: 80%;
@@ -92,10 +136,68 @@ button {
   cursor: pointer;
 }
 
-.header-side{
-  text-align: left;
+.image-container {
+  width: 100%;
+  max-width: 400px;
+  margin-bottom: 1rem;
 }
 
-.expense-data{
-  text-align: left;
+.auth-inner {
+  width: 450px;
+  margin: auto;
+  background-color: #ffffff;
+  box-shadow: 0 14px 80px rgba(34, 35, 58, 0.2);
+  padding: 40px 55px 45px;
+  border-radius: 15px;
+  transition: all .3s;
+}
+
+.auth-form-title {
+  text-align: center;
+  margin: 0;
+  line-height: 1;
+  padding-bottom: 20px;
+  font-size: var(--font-size-medium);
+}
+
+.auth-form-label {
+  font-weight: 400;
+}
+
+.auth-form-control:focus {
+  border-color: var(--primary-color);
+  box-shadow: none;
+}
+
+.forgot-password,
+.forgot-password a {
+  text-align: right;
+  font-size: var(--font-size-small);
+  padding-top: 10px;
+  color: #7f7d7d;
+  margin: 0;
+}
+
+.forgot-password a {
+  color: var(--primary-color);
+}
+
+.login-page {
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  height: 100vh;
+  background-color: var(--background-color);
+}
+
+.image-container {
+  width: 100%;
+  max-width: 400px;
+  margin-bottom: 1rem;
+}
+
+.login-page-image {
+  max-width: 100%;
+  max-height: 100%;
+  object-fit: contain;
 }
