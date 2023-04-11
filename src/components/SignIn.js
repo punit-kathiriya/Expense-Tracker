@@ -6,13 +6,16 @@ import React from 'react';
 import { Row, Col } from 'react-bootstrap';
 import Log from '../images/Log.jpg';
 import { BiLogInCircle } from "react-icons/bi";
+import '../App.css';
 
 export const SignIn = () => {
   return (
     <div className="LogPages">
     <Row>
         <Col>
-            <img src={Log} alt="..." />
+        <div className='image-container'>
+            <img src={Log} alt="..." className= 'login-page-image'/>
+        </div>
         </Col>
         <Col>
         <div className="Form">

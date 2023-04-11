@@ -6,13 +6,16 @@ import React from 'react';
 import { Row, Col } from 'react-bootstrap';
 import Log from '../images/Log.jpg';
 import { AiOutlineLogin } from "react-icons/ai";
+import '../App.css';
 
 export const SignUp = () => {
     return (
         <div className="LogPages">
         <Row>
             <Col>
-                <img src={Log} alt="..." />
+            <div className='image-container'>
+                <img src={Log} alt="..." className= 'login-page-image'/>
+            </div>
             </Col>
             <Col>
             <div className="Form">
@@ -54,7 +57,7 @@ export const SignUp = () => {
                             required
                             />
                             <label className="custom-control-label" id="check" htmlFor="customCheck1"> 
-                            <a href="#" >Accapt the tearms!</a>
+                            <a href="#" >Accept terms!</a>
                             </label>
                         </div>
                     </div>
