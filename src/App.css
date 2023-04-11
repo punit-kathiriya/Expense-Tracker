@@ -83,3 +83,8 @@ nav a:hover {
   width: 100%;
   margin-top: 40px;
 }
+
+.FormSmallText {
+  display: flex;
+  justify-content: space-between;
+}

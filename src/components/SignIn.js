@@ -83,9 +83,14 @@ export const SignIn = ({ onSubmit, currentUser }) => {
                   Sign in <BiLogInCircle />
                 </button>
               </div>
-              <p className="forgot-password text-right">
-                Forgot <a href="#">password?</a>
-              </p>
+              <div className='FormSmallText'>
+                <p className="forgot-password text-right">
+                  Forgot <a href="#">password?</a>
+                </p>
+                <p className="forgot-password text-right">
+                    Do not have account? <a href="/signup">sign up</a>
+                </p>
+              </div>
             </form>
           </div>
         </Col>
