@@ -88,3 +88,8 @@ nav a:hover {
   display: flex;
   justify-content: space-between;
 }
+
+.validation {
+  color: #e73333;
+  font-size: 13px;
+}
