@@ -7,6 +7,9 @@ import { Row, Col } from 'react-bootstrap';
 import Log from '../images/Log.jpg';
 import { BiLogInCircle } from "react-icons/bi";
 import { validation } from '../components/LoginValidation'
+import '../App.css';
+import { useNavigate } from 'react-router-dom';
+
 
 export const SignIn = () => {
   const [values, setValues] = useState({
@@ -29,7 +32,9 @@ export const SignIn = () => {
     <div className="LogPages">
       <Row>
         <Col>
-          <img src={Log} alt="..." />
+        <div className='image-container'>
+            <img src={Log} alt="..." className= 'login-page-image'/>
+        </div>
         </Col>
         <Col>
           <div className="Form">

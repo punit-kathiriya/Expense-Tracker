@@ -2,11 +2,14 @@
 // Auth: Sami Wazni/Terminal Swag Disorder
 // Desc: File currently in development containing code for user sign up
 
+import '../App.css';
 import React, { useState } from 'react';
+import { useNavigate } from 'react-router-dom';
 import { Row, Col } from 'react-bootstrap';
 import Log from '../images/Log.jpg';
 import { AiOutlineLogin } from "react-icons/ai";
 import { validation } from '../components/LoginValidation'
+
 
 
 export const SignUp = () => {
@@ -31,7 +34,9 @@ export const SignUp = () => {
         <div className="LogPages">
         <Row>
             <Col>
-                <img src={Log} alt="..." />
+            <div className='image-container'>
+                <img src={Log} alt="..." className= 'login-page-image'/>
+            </div>
             </Col>
             <Col>
             <div className="Form">
@@ -70,6 +75,16 @@ export const SignUp = () => {
                     />
                     {errors.password && <span className='validation'>{errors.password}</span>}
                     </div>                    
+                    <div className="mb-3">
+                        <div className="custom-control custom-checkbox">
+                            <input
+                            type="checkbox"
+                            className="custom-control-input"
+                            id="customCheck1"
+                            required
+                            />
+                        </div>
+                    </div>
                     <div className="d-grid">
                       <button type="submit" className="btn btn-primary">
                         Sign Up <AiOutlineLogin />
