@@ -201,3 +201,8 @@ nav a:hover {
   max-height: 100%;
   object-fit: contain;
 }
+
+.validation {
+  color: #ff0000;
+  font-size: 13px;
+}

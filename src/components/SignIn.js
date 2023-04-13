@@ -6,32 +6,25 @@ import React, { useState } from 'react';
 import { Row, Col } from 'react-bootstrap';
 import Log from '../images/Log.jpg';
 import { BiLogInCircle } from "react-icons/bi";
-import '../App.css';
-import { useNavigate } from 'react-router-dom';
+import { validation } from '../components/LoginValidation'
+import { Link } from "react-router-dom"
 
-export const SignIn = ({ onSubmit, currentUser }) => {
-  const [email, setEmail] = useState('');
-  const [password, setPassword] = useState('');
-  const navigate = useNavigate();
+export const SignIn = () => {
+  const [values, setValues] = useState({
+    email: '',
+    password: ''
+  });
+
+  const [errors, setErrors] = useState({})
+
+  const handleInput = (event) => {
+    setValues(prev => ({...prev, [event.target.name]: [event.target.value]}))
+  }
 
   const handleSubmit = (event) => {
     event.preventDefault();
-    const user = {
-      Email: email,
-      Password: password,
-    };
-
-    onSubmit(user)
-      .then((foundUser) => {
-        // navigate("/");
-      })
-      .catch((error) => {
-        alert("Wrong email or password2")
-        console.error(error);
-        // You can also update the component state to show an error message to the user.
-      });
+    setErrors(validation(values));
   };
-	console.log("si:", currentUser)
   
   return (
     <div className="LogPages">
@@ -51,11 +44,10 @@ export const SignIn = ({ onSubmit, currentUser }) => {
                   type="email"
                   className="form-control"
                   placeholder="Enter email"
-                  required
                   name="email"
-                  value={email}
-                  onChange={(e) => setEmail(e.target.value)}
+                  onChange={handleInput}
                 />
+                {errors.email && <span className='validation'>{errors.email}</span>}
               </div>
               <div className="mb-3">
                 <label>Password</label>
@@ -63,11 +55,10 @@ export const SignIn = ({ onSubmit, currentUser }) => {
                   type="password"
                   className="form-control"
                   placeholder="Enter password"
-                  required
                   name="password"
-                  value={password}
-                  onChange={(e) => setPassword(e.target.value)}
+                  onChange={handleInput}
                 />
+                {errors.password && <span className='validation'>{errors.password}</span>}
               </div>
               <div className="mb-3">
                 <div className="custom-control custom-checkbox">
@@ -91,7 +82,7 @@ export const SignIn = ({ onSubmit, currentUser }) => {
                   Forgot <a href="#">password?</a>
                 </p>
                 <p className="forgot-password text-right">
-                    Do not have account? <a href="/signup">sign up</a>
+                    Do not have account? <Link to="/signup">sign up</Link>
                 </p>
               </div>
             </form>
