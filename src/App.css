@@ -16,7 +16,11 @@ body {
 }
 
 .Form {
-  margin-top: 50px;
+  margin-top: 150px;
+  background: #f1f1f14f;
+  padding: 20px;
+  border-radius: 5px;
+  box-shadow: rgba(28, 88, 147, 0.2) 0px 8px 24px;
 }
 
 .auth-form {
@@ -123,4 +127,37 @@ nav a:hover {
 .validation {
   color: #e73333;
   font-size: 13px;
+}
+
+.AddCarForm {
+  margin-top: 70px;
+}
+
+.AddForm {
+  background: #f1f1f14f;
+  padding: 20px;
+  border-radius: 5px;
+  box-shadow: rgba(28, 88, 147, 0.2) 0px 8px 24px;
+}
+
+.AddCarForm ::placeholder {
+  font-size: 13px;
+}
+ 
+.AddForm input{
+  border: 1px solid #edecece7;
+}
+
+.AddForm label {
+  margin: 10px 5px;
+}
+
+.AddCarForm img{
+  width: 100%;
+  margin-top: 80px;
+}
+
+.AddCarForm h3{
+  font-weight: 700;
+  margin-bottom: 20px;
 }
