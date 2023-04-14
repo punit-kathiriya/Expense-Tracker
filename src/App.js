@@ -1,7 +1,7 @@
 import React, { useState } from 'react';
 import './App.css';
 import { Routes, Route } from 'react-router-dom';
-import { API, APISignUp, APISignIn } from './api';
+import { API, APISignUp, APISignIn, APIAddCar } from './api';
 import AppNav from './components/AppNav';
 import { SignIn } from './components/SignIn';
 import { SignUp } from './components/SignUp';
@@ -31,7 +31,7 @@ function App() {
           <Route path="/signin" element={<APISignIn onUserChange={handleUserChange} />} />
           <Route path="/signup" element={<APISignUp onUserChange={handleUserChange} />} />
           <Route path="/api" element={<API />} />
-          <Route path="/cars/add" element={<AddCar />} />
+          <Route path="/cars/add" element={<APIAddCar onUserChange={handleUserChange} />} />
         </Routes>
       </Container>
     </div>

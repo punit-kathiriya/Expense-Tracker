@@ -1,63 +1,98 @@
 import React, { useState } from 'react';
-import Row from 'react-bootstrap/Row';
-import Col from 'react-bootstrap/Col';
-import Button from 'react-bootstrap/Button';
-import Form from 'react-bootstrap/Form';
+import { Row, Col } from 'react-bootstrap';
 import { CiCirclePlus } from "react-icons/ci";
 import { useNavigate } from 'react-router';
+import addCar from '../images/addCar.jpg';
 
-export const AddCar = () => {
-  const [carName, setCarName] = useState('');
-  const [carManufacture, setCarManufacture] = useState('');
-  const [fuelCapacity, setFuelCapacity] = useState(0);
-  const [carBattery, setCarBattery] = useState(0);
-  const [isElectric, setIsElectric] = useState(false);
+export const AddCar = ({ onSubmit }) => {
   const navigate = useNavigate();
-  
+  const [isElectric, setIsElectric] = useState(false);
 
   const handleSubmit = (event) => {
     event.preventDefault();
-    if (!carName || !carManufacture || fuelCapacity <= 0 || carBattery <= 0) {
-      alert('Please fill in all the required fields with valid data.');
-      return;
-    }
-    const formData = { carName, carManufacture, fuelCapacity, carBattery, isElectric };
-    navigate('/cars', { state: formData });
+    onSubmit(event);
+    navigate("/cars");
+    alert("Car added successfully");
+  };
+
+  const handleCheckboxChange = () => {
+    setIsElectric(!isElectric);
   };
   
   return ( 
-    <>
+    <div className="AddCarForm">
       <Row>
-        <Col className='mt-5 expense-data'>
-          <h2>Add Car</h2>
-          <Form onSubmit={handleSubmit}>
-            <Form.Group className="mb-3" controlId="formBasic">
-              <Form.Label>Car Name </Form.Label>
-              <Form.Control type="text" placeholder="Enter Your Car Name" id="name" value={carName} onChange={(e) => setCarName(e.target.value)} />
-            </Form.Group>
-            <Form.Group className="mb-3" controlId="formBasic">
-              <Form.Label>Car Manufacture</Form.Label>
-              <Form.Control type="text" placeholder="Enter Car Manufacture" id='manufacture' value={carManufacture} onChange={(e) => setCarManufacture(e.target.value)} />
-            </Form.Group>
-            <Form.Group className="mb-3" controlId="formBasic">
-              <Form.Label>Fuel Capacity (in ltr)</Form.Label>
-              <Form.Control type="number" min="0" placeholder="Enter Fuel Capacity (in ltr)" value={fuelCapacity} onChange={(e) => setFuelCapacity(e.target.value)} />
-            </Form.Group>
-            <Form.Group className="mb-3" controlId="formBasic">
-              <Form.Label>Car Battery (in %)</Form.Label>
-              <Form.Control type="number" min="0" placeholder="Enter Car Battery (in %)" value={carBattery} onChange={(e) => setCarBattery(e.target.value)} />
-            </Form.Group>
-            <Form.Group className="mb-3" controlId="formBasic">
-              <Form.Check type="checkbox" id="is-electirc" label="is your car Electric?" checked={isElectric} onChange={(e) => setIsElectric(e.target.checked)} />
-            </Form.Group>
-            <Button variant="primary" type="submit">
-              Add Car <CiCirclePlus />
-            </Button>
-          </Form>
-        </Col>
-        <Col xs lg="5"></Col>
-      </Row>
-    </>
+        <Col>
+          <div className="AddForm">
+          <h3>Add Car</h3>
+          <form onSubmit={handleSubmit}>
+            <div className="mb-3">
+              <label>Car Manufacture</label>
+              <input 
+              type="text" 
+              className="form-control" 
+              placeholder="Manufacture" 
+              required 
+              name="manufacturer" />
+            </div>
+            <div className="mb-3">
+              <label>Model</label>
+              <input 
+              type="text" 
+              className="form-control" 
+              placeholder="Model" 
+              required 
+              name="model" />
+            </div>
+            <div className="mb-3">
+              <label>Fuel Capacity (in ltr)</label>
+              <input 
+              type="number" 
+              className="form-control" 
+              placeholder="0"
+              required 
+              disabled={isElectric}
+              name="tank" />
+            </div>
+            <div className="mb-3">
+              <label>Car Battery (in %)</label>
+              <input 
+              type="number" 
+              className="form-control" 
+              placeholder="0" 
+              required 
+              name="battery" 
+              disabled={!isElectric} />
+            </div>
+            <div className="mb-3">
+              <div className="custom-control custom-checkbox">
+                <input 
+                type="checkbox" 
+                className="custom-control-input" 
+                checked={isElectric}
+                id="customCheck1" onChange={handleCheckboxChange} 
+                name="is_electric"
+                />
+                <label className="custom-control-label" 
+                id="check" 
+                htmlFor="customCheck1">
+                  is your car Electric?
+                </label>
+              </div>
+            </div>
+            <div className="d-grid">
+              <button type="submit" className="btn btn-primary">
+                Add Car <CiCirclePlus />
+              </button>
+            </div>
+          </form>
+        </div>
+      </Col>
+      <Col>
+        <img src={addCar} alt="..." />
+      </Col>
+    </Row>
+  </div>
   );
 };
 
