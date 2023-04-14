@@ -10,6 +10,7 @@ import { BrowserRouter, useLocation, useNavigate } from 'react-router-dom';
 import { SignUp } from './components/SignUp';
 import { SignIn } from './components/SignIn';
 import { AppNav } from './components/AppNav';
+import { AddCar } from './components/AddCar';
 
 
 function API({ onUserChange }) {
@@ -65,22 +66,20 @@ const handleAddUser = (event) => {
   }
 };
 
-	
-const handleAddCar = () => {
-  const UID = prompt('Enter UID:');
-  const Manufacturer = prompt('Enter Manufacturer:');
-  const Model = prompt('Enter Model:');
-  let Is_Electric;
-  do {
-    Is_Electric = prompt('Is Electric (0 or 1):');
-  } while (!/^[01]$/.test(Is_Electric));
+// modified the code to add new cars
+const handleAddCar = (event) => {
+  const UID = users.id;
+  const Manufacturer = event.target.manufacturer.value;
+  const Model = event.target.model.value;
+  const Is_Electric = event.target.querySelector('#customCheck1').checked ? '1' : '0';
   let Tank, Battery;
+  // Check if the user use 1 or 2
   if (Is_Electric === '1') {
-    Battery = prompt('Enter Battery:');
+    Battery = event.target.battery.value;
   } else {
-    Tank = prompt('Enter Tank:');
+    Tank = event.target.tank.value;
   }
-  if (UID && Manufacturer && Model && Is_Electric && ((Is_Electric === '1' && Battery) || (Is_Electric === '0' && Tank))) {
+  if (Manufacturer && Model && Is_Electric && ((Is_Electric === '1' && Battery) || (Is_Electric === '0' && Tank))) {
     fetch('http://localhost:4000/api/cars', {
       method: 'POST',
       headers: { 'Content-Type': 'application/json' },
@@ -88,11 +87,12 @@ const handleAddCar = () => {
     })
       .then(response => response.json())
       .then(data => {
-        setCars([...cars, { ID: data.id, UID, Manufacturer, Model, Tank, Battery, Is_Electric }]);
+        setCars([...cars, { ID: data.id, Manufacturer, Model, Tank, Battery, Is_Electric }]);
       })
       .catch(console.error);
   }
 };
+
 
 
 const handleAddPrice = () => {
@@ -152,6 +152,7 @@ const location = useLocation();
       {currentUser && <AppNav currentUser={currentUser} onSignOut={handleSignOut} />}
       {location.pathname === '/signup' && <SignUp onSubmit={handleAddUser} />}
       {location.pathname === '/signin' && <SignIn currentUser={currentUser} onSubmit={handleCheckUser} />}
+      {location.pathname === '/cars/add' && <AddCar onSubmit={handleAddCar} />}
     </div>
   );
 }
@@ -172,6 +173,14 @@ function APISignIn(props) {
   );
 }
 
+function APIAddCar(props) {
+  return (
+    <API onUserChange={props.onUserChange}>
+      {(onSubmit) => <AddCar onSubmit={onSubmit} />}
+    </API>
+  );
+}
+
 reportWebVitals();
 
-export { API, APISignUp, APISignIn };
+export { API, APISignUp, APISignIn, APIAddCar };
