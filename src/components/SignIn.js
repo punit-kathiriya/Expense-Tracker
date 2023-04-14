@@ -6,35 +6,38 @@ import React, { useState } from 'react';
 import { Row, Col } from 'react-bootstrap';
 import Log from '../images/Log.jpg';
 import { BiLogInCircle } from "react-icons/bi";
-import { validation } from '../components/LoginValidation'
-import '../App.css';
 import { useNavigate } from 'react-router-dom';
 
-
-export const SignIn = () => {
-  const [values, setValues] = useState({
-    email: '',
-    password: ''
-  });
-
-  const [errors, setErrors] = useState({})
-
-  const handleInput = (event) => {
-    setValues(prev => ({...prev, [event.target.name]: [event.target.value]}))
-  }
+export const SignIn = ({ onSubmit, currentUser }) => {
+  const [email, setEmail] = useState('');
+  const [password, setPassword] = useState('');
+  const navigate = useNavigate();
 
   const handleSubmit = (event) => {
     event.preventDefault();
-    setErrors(validation(values));
+    const user = {
+      Email: email,
+      Password: password,
+    };
+
+    onSubmit(user)
+      .then((foundUser) => {
+		event.preventDefault();
+        // navigate("/");
+      })
+      .catch((error) => {
+        alert("Wrong email or password2")
+        console.error(error);
+        // You can also update the component state to show an error message to the user.
+      });
   };
+	console.log("si:", currentUser)
   
   return (
     <div className="LogPages">
       <Row>
         <Col>
-        <div className='image-container'>
-            <img src={Log} alt="..." className= 'login-page-image'/>
-        </div>
+          <img src={Log} alt="..." />
         </Col>
         <Col>
           <div className="Form">
@@ -46,10 +49,11 @@ export const SignIn = () => {
                   type="email"
                   className="form-control"
                   placeholder="Enter email"
+                  required
                   name="email"
-                  onChange={handleInput}
+                  value={email}
+                  onChange={(e) => setEmail(e.target.value)}
                 />
-                {errors.email && <span className='validation'>{errors.email}</span>}
               </div>
               <div className="mb-3">
                 <label>Password</label>
@@ -57,10 +61,11 @@ export const SignIn = () => {
                   type="password"
                   className="form-control"
                   placeholder="Enter password"
+                  required
                   name="password"
-                  onChange={handleInput}
+                  value={password}
+                  onChange={(e) => setPassword(e.target.value)}
                 />
-                {errors.password && <span className='validation'>{errors.password}</span>}
               </div>
               <div className="mb-3">
                 <div className="custom-control custom-checkbox">
@@ -79,14 +84,9 @@ export const SignIn = () => {
                   Sign in <BiLogInCircle />
                 </button>
               </div>
-              <div className='FormSmallText'>
-                <p className="forgot-password text-right">
-                  Forgot <a href="#">password?</a>
-                </p>
-                <p className="forgot-password text-right">
-                    Do not have account? <a href="/signup">sign up</a>
-                </p>
-              </div>
+              <p className="forgot-password text-right">
+                Forgot <a href="#">password?</a>
+              </p>
             </form>
           </div>
         </Col>

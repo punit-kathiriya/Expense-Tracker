@@ -2,41 +2,28 @@
 // Auth: Sami Wazni/Terminal Swag Disorder
 // Desc: File currently in development containing code for user sign up
 
-import '../App.css';
-import React, { useState } from 'react';
-import { useNavigate } from 'react-router-dom';
+import React from 'react';
 import { Row, Col } from 'react-bootstrap';
 import Log from '../images/Log.jpg';
 import { AiOutlineLogin } from "react-icons/ai";
-import { validation } from '../components/LoginValidation'
+import { useNavigate } from 'react-router-dom';
 
 
+export const SignUp = ({ onSubmit }) => {
+	const navigate = useNavigate();
 
-export const SignUp = () => {
-    const [values, setValues] = useState({
-        name: '',
-        email: '',
-        password: ''
-      });
-    
-      const [errors, setErrors] = useState({})
-    
-      const handleInput = (event) => {
-        setValues(prev => ({...prev, [event.target.name]: [event.target.value]}))
-      }
-    
-      const handleSubmit = (event) => {
-        event.preventDefault();
-        setErrors(validation(values));
-      };
+    const handleSubmit = (event) => {
+		event.preventDefault();
+        onSubmit(event);
+		navigate('/signin');
+		alert("Registration successful")
+    };
 	
     return (
         <div className="LogPages">
         <Row>
             <Col>
-            <div className='image-container'>
-                <img src={Log} alt="..." className= 'login-page-image'/>
-            </div>
+                <img src={Log} alt="..." />
             </Col>
             <Col>
             <div className="Form">
@@ -48,10 +35,10 @@ export const SignUp = () => {
                         type="text"
                         className="form-control"
                         placeholder="Name"
+                        required
 						name="name"
-                        onSubmit={handleInput}
+
                     />
-                    {errors.name && <span className='validation'>{errors.name}</span>}
                     </div>
                     <div className="mb-3">
                     <label>Email address</label>
@@ -59,10 +46,10 @@ export const SignUp = () => {
                         type="email"
                         className="form-control"
                         placeholder="Enter email"
+                        required
 						name="email"
-                        onSubmit={handleInput}
+
                     />
-                    {errors.email && <span className='validation'>{errors.email}</span>}
                     </div>
                     <div className="mb-3">
                     <label>Password</label>
@@ -70,11 +57,11 @@ export const SignUp = () => {
                         type="password"
                         className="form-control"
                         placeholder="Enter password"
+                        required
 						name="password"
-                        onSubmit={handleInput}
+
                     />
-                    {errors.password && <span className='validation'>{errors.password}</span>}
-                    </div>                    
+                    </div>
                     <div className="mb-3">
                         <div className="custom-control custom-checkbox">
                             <input
@@ -83,8 +70,12 @@ export const SignUp = () => {
                             id="customCheck1"
                             required
                             />
+                            <label className="custom-control-label" id="check" htmlFor="customCheck1"> 
+                            <a href="#" >Accept the terms.</a>
+                            </label>
                         </div>
                     </div>
+                    
                     <div className="d-grid">
                       <button type="submit" className="btn btn-primary">
                         Sign Up <AiOutlineLogin />
