@@ -1,6 +1,6 @@
 // File name: SignUp.js
 // Auth: Sami Wazni/Terminal Swag Disorder
-// Desc: File currently in development containing code for user sign up
+// Desc: This file containing code for user sign up
 
 import React from 'react';
 import { Row, Col } from 'react-bootstrap';

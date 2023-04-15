@@ -1,3 +1,7 @@
+// File name: AddCar.js
+// Auth: Sami Wazni
+// Desc: This file containing code for user adding a car
+
 import React, { useState } from 'react';
 import { Row, Col } from 'react-bootstrap';
 import { CiCirclePlus } from "react-icons/ci";
