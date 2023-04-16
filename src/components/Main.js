@@ -1,21 +1,63 @@
-// File name: AddCar.js
-// Auth: Punit
-// Desc: This file containing code for adding Expense Tracker
-
-import React from 'react';
-import { Row, Col, Button, Form, Card } from 'react-bootstrap';
+import React, { useState, useEffect } from 'react';
+import { useNavigate } from 'react-router-dom';
+import { Container, Row, Col, Button, Form, Card } from 'react-bootstrap';
 import { CiCirclePlus } from "react-icons/ci";
 
-export const Main = () => {
+export const Main = ({ onSubmit }) => {
+  const [data, setData] = useState([]);
+  const [total, setTotal] = useState([]);
+  const navigate = useNavigate();
+  const [Total_filled, setTotal_filled] = useState('');
+  const [Total_price, setTotal_price] = useState('');
+  const [Total_distance, setTotal_distance] = useState('');
+  const [CID, setCID] = useState('');
+
+  useEffect(() => {
+    fetch("http://localhost:4000/api/cars")
+      .then((response) => response.json())
+      .then((total) => setData(total));
+  }, []);
+
+  useEffect(() => {
+    fetch("http://localhost:4000/api/mileage_prices")
+      .then((response) => response.json())
+      .then((data) => setTotal(data));
+  }, []);
+
+  let sum = 0;
+
+  total.map(items => (
+    sum +=items.Total_price  
+    ));
+  const handleSubmit = (event) => {
+    event.preventDefault();
+    const priceing = {
+      Total_filled: Total_filled,
+      Total_price: Total_price,
+      Total_distance: Total_distance,
+      CID: CID,
+    };
+    onSubmit(priceing)
+      .then((handleAddPrice) => {
+        event.preventDefault();
+        navigate("/");
+      })
+      .catch((error) => {
+        alert("Wrong email or password2")
+        console.error(error);
+        // You can also update the component state to show an error message to the user.
+      });
+  };
+
   return (
     <>
       <Row className='mt-5'>
         <Col xs={12} md={12}>
           <Card>
             <Card.Body>
-              <Card.Title className='header-side'>Your Balance :  <span>0.00 €</span></Card.Title>
+              <Card.Title className='header-side'>Your Total Expense :  <span>{sum}€</span></Card.Title>
               {/* <Card.Text>
-              0.00€
+              0.00
               </Card.Text> */}
             </Card.Body>
           </Card>
@@ -24,26 +66,28 @@ export const Main = () => {
       <Row>
         <Col className='mt-5 expense-data' >
           <h2>Add Expense</h2>
-          <Form>
+          <Form onSubmit={onSubmit} action="#" >
             <Form.Group className="mb-3" controlId="formBasic">
               <Form.Label>Price of Refueling </Form.Label>
-              <Form.Control type="number" min="0" placeholder="Enter Amount 0.00 €" />
+              <Form.Control type="number" name="Total_filled" value={Total_filled} onChange={(e) => setTotal_filled(e.target.value)} min="0"
+                placeholder="Enter Amount 0.00 €" />
             </Form.Group>
             <Form.Group className="mb-3" controlId="formBasic">
               <Form.Label>Total Qty (in liters)</Form.Label>
-              <Form.Control type="number" min="0" placeholder="Enter QTY (in ltr)" />
+              <Form.Control type="number" name="Total_price" value={Total_price} onChange={(e) => setTotal_price(e.target.value)} min="0" placeholder="Enter QTY (in ltr)" />
             </Form.Group>
             <Form.Group className="mb-3" controlId="formBasic">
               <Form.Label>Total Distace Driven with refueling (in KM)</Form.Label>
-              <Form.Control type="number" min="0" placeholder="Enter Distance Driven (in KM)" />
+              <Form.Control type="number" name="Total_distance" value={Total_distance} onChange={(e) => setTotal_distance(e.target.value)} min="0" placeholder="Enter Distance Driven (in KM)" />
             </Form.Group>
             <Form.Group className="mb-3" controlId="formBasic">
               <Form.Label>Select your Car</Form.Label>
-              <Form.Select className="" aria-label="Default select example" name="cars" id="cars">
-                <option>Choose your car!</option>
-                <option value="car1">Car 1</option>
-                <option value="car2">Car 2</option>
-                <option value="car3">Car 3</option>
+              <Form.Select className="" name="CID" onChange={(e) => setCID(e.target.value)} aria-label="Default select example" id="cars">
+                <option value="">Choose your car!</option>
+                {data.map(item => (
+                  <option value={item.ID}>{item.Manufacturer} {item.Model}</option>
+                ))}
+               
               </Form.Select>
             </Form.Group>
 
@@ -53,6 +97,7 @@ export const Main = () => {
           </Form>
         </Col>
         <Col xs lg="5">
+
         </Col>
       </Row>
     </>

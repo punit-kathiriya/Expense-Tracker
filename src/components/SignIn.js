@@ -22,7 +22,7 @@ export const SignIn = ({ onSubmit, currentUser }) => {
 
     onSubmit(user)
       .then((foundUser) => {
-		event.preventDefault();
+        event.preventDefault();
         // navigate("/");
       })
       .catch((error) => {
@@ -31,8 +31,8 @@ export const SignIn = ({ onSubmit, currentUser }) => {
         // You can also update the component state to show an error message to the user.
       });
   };
-	console.log("si:", currentUser)
-  
+  console.log("si:", currentUser)
+
   return (
     <div className="LogPages">
       <Row>
@@ -74,7 +74,7 @@ export const SignIn = ({ onSubmit, currentUser }) => {
                     className="custom-control-input"
                     id="customCheck1"
                   />
-                  <label className="custom-control-label" id="check" htmlFor="customCheck1"> 
+                  <label className="custom-control-label" id="check" htmlFor="customCheck1">
                     Remember me
                   </label>
                 </div>
@@ -90,7 +90,7 @@ export const SignIn = ({ onSubmit, currentUser }) => {
             </form>
           </div>
         </Col>
-      </Row>   
+      </Row>
     </div>
   );
 }
