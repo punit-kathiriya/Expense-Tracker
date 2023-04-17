@@ -1,3 +1,7 @@
+// File name: AddCar.js
+// Auth: Sami Wazni
+// Desc: This file containing code for creating a Menu
+
 import React, { useEffect, useState } from 'react';
 import Container from 'react-bootstrap/Container';
 import Nav from 'react-bootstrap/Nav';
@@ -47,6 +51,5 @@ export const AppNav = ({ currentUser, onSignOut }) => {
     </Navbar>
   );
 };
-
 
 export default AppNav;

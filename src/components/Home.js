@@ -1,9 +1,9 @@
+// File name: AddCar.js
+// Auth: Punit
+// Desc: This file containing code for the Expense Tracker to display the prices
+
 import React from 'react';
-import Container from 'react-bootstrap/Container';
-import Row from 'react-bootstrap/Row';
-import Col from 'react-bootstrap/Col';
-import Card from 'react-bootstrap/Card';
-import Button from 'react-bootstrap/Button';
+import { Row, Col, Card, Button } from 'react-bootstrap';
 import { CiCirclePlus } from "react-icons/ci";
 
 export const Home = () => {

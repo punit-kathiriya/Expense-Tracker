@@ -1,17 +1,14 @@
-import React, { useState } from 'react';
 import './App.css';
-import { Routes, Route } from 'react-router-dom';
-import { API, APISignUp, APISignIn, APIAddCar } from './api';
+import React, { useState } from 'react';
 import AppNav from './components/AppNav';
-import { SignIn } from './components/SignIn';
-import { SignUp } from './components/SignUp';
 import { Home } from './components/Home';
 import { Main } from './components/Main';
 import { Cars } from './components/Cars';
-import { AddCar } from './components/AddCar';
 import { Container } from 'react-bootstrap';
+import { Routes, Route } from 'react-router-dom';
+import { API, APISignUp, APISignIn, APIAddCar } from './api';
 
-function App() {
+const App = () => {
   const [currentUser, setCurrentUser] = useState(null);
 
   const handleUserChange = (event) => {

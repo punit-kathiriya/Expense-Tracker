@@ -1,10 +1,11 @@
+// File name: AddCar.js
+// Auth: Milla Mäkinen
+// Desc: This file containing code for display added Cars
+
 import React, { useState, useEffect } from 'react';
 import { Button, Card, Col, Container, Row } from 'react-bootstrap';
-import { CiCircleMinus } from 'react-icons/ci';
-import { CiEdit } from 'react-icons/ci';
-import { CiCirclePlus } from 'react-icons/ci';
-import { useLocation } from 'react-router-dom';
-import { FaEdit, FaTrash } from 'react-icons/fa';
+import { CiEdit , CiCirclePlus} from 'react-icons/ci';
+import { FaTrash } from 'react-icons/fa';
 import { fetchCarData } from '../api';
 
 /// car: for creating cars, onEdit: if user edit function, onDelete if user delete a car ///
@@ -21,7 +22,7 @@ const CarCard = ({ car, onEdit, onDelete }) => {
           <p>Tank: {Tank} L</p>
         )}
         <Button variant="primary" onClick={() => onEdit(car)}>
-          <FaEdit /> Edit
+          <CiEdit /> Edit
         </Button>{' '}
         <Button variant="danger" onClick={() => onDelete(ID)}>
           <FaTrash /> Delete

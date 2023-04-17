@@ -1,10 +1,9 @@
+// File name: AddCar.js
+// Auth: Punit
+// Desc: This file containing code for adding Expense Tracker
+
 import React from 'react';
-import Container from 'react-bootstrap/Container';
-import Row from 'react-bootstrap/Row';
-import Col from 'react-bootstrap/Col';
-import Button from 'react-bootstrap/Button';
-import Form from 'react-bootstrap/Form';
-import Card from 'react-bootstrap/Card';
+import { Row, Col, Button, Form, Card } from 'react-bootstrap';
 import { CiCirclePlus } from "react-icons/ci";
 
 export const Main = () => {
@@ -53,9 +52,7 @@ export const Main = () => {
             </Button>
           </Form>
         </Col>
-
         <Col xs lg="5">
-            
         </Col>
       </Row>
     </>
