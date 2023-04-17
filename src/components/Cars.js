@@ -7,7 +7,7 @@ import { useLocation } from 'react-router-dom';
 import { FaEdit, FaTrash } from 'react-icons/fa';
 import { fetchCarData } from '../api';
 
-/// car: for creating a cars, onEdit if we add edit function, onDelete if we want to delete a car ///
+/// car: for creating cars, onEdit: if user edit function, onDelete if user delete a car ///
 const CarCard = ({ car, onEdit, onDelete }) => {
   const { ID, Manufacturer, Model, Tank, Battery, Is_Electric } = car;
   return (
@@ -32,18 +32,10 @@ const CarCard = ({ car, onEdit, onDelete }) => {
   );
 };
 
-
-const CarsFunction = () => {
-  const [cars, setCars] = useState([]);
-
-}
-
 export const Cars = () => {
   const [cars, setCars] = useState([]);
 
-
 // This lines will get the data from the api
-
   useEffect(() => {
     fetchCarData()
       .then(data => setCars(data))
@@ -70,7 +62,7 @@ export const Cars = () => {
           {cars.map(car => (
           <CarCard
             key={car.ID}
- // get the car
+          // get the car
             car={car}
           />
           ))}
@@ -79,8 +71,5 @@ export const Cars = () => {
     </Container>
   );
 };
-
-
-
 
 export default Cars;
