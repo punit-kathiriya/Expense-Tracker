@@ -11,6 +11,7 @@ import { SignUp } from './components/SignUp';
 import { SignIn } from './components/SignIn';
 import { AppNav } from './components/AppNav';
 import { AddCar } from './components/AddCar';
+import { Cars } from './components/Cars';
 
 
 function API({ onUserChange }) {
@@ -153,6 +154,8 @@ const location = useLocation();
       {location.pathname === '/signup' && <SignUp onSubmit={handleAddUser} />}
       {location.pathname === '/signin' && <SignIn currentUser={currentUser} onSubmit={handleCheckUser} />}
       {location.pathname === '/cars/add' && <AddCar onSubmit={handleAddCar} />}
+      {location.pathname === '/cars' && <Cars onSubmit={handleAddCar} />}
+      
     </div>
   );
 }
@@ -177,6 +180,14 @@ function APIAddCar(props) {
   return (
     <API onUserChange={props.onUserChange}>
       {(onSubmit) => <AddCar onSubmit={onSubmit} />}
+    </API>
+  );
+}
+
+function APICars(props) {
+  return (
+    <API {...props}>
+      {(onSubmit) => <Cars onSubmit={onSubmit} />}
     </API>
   );
 }

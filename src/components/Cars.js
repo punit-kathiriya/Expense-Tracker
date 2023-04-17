@@ -1,4 +1,4 @@
-import React, { useState } from 'react';
+import React, { useState, useEffect } from 'react';
 import Row from 'react-bootstrap/Row';
 import Col from 'react-bootstrap/Col';
 import Button from 'react-bootstrap/Button';
@@ -7,6 +7,8 @@ import { CiCircleMinus } from 'react-icons/ci';
 import { CiEdit } from 'react-icons/ci';
 import { CiCirclePlus } from 'react-icons/ci';
 import { useLocation } from 'react-router-dom';
+
+
 
 export const Cars = () => {
   const location = useLocation();
@@ -40,10 +42,10 @@ export const Cars = () => {
                   <Row>
                     <Col xs={12} md={8}>
                       <Card.Title className='header-side'>
-                        <h2 className='mb-2'>Name: {car.carName}</h2>
-                        <h5>Manufacture: {car.carManufacture}<br></br>
-                        Fuel Capacity: {car.fuelCapacity}<br></br>
-                        Car Battery: {car.carBattery}%</h5>
+                        <h2 className='mb-2'>Name: {car.Model}</h2>
+                        <h5>Manufacture: {car.Manufacturer}<br></br>
+                        Fuel Capacity: {car.Tank ?? 'N/A'}<br></br>
+                        Car Battery: {car.Battery ?? 'N/A'}%</h5>
                       </Card.Title>
                     </Col>
                     <Col xs={12} md={4}>
