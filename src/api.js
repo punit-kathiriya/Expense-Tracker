@@ -3,7 +3,6 @@
 // Desc: File containing code for user api functionality
 
 import React, { useEffect, useState } from 'react';
-import ReactDOM from 'react-dom';
 import './index.css';
 import reportWebVitals from './reportWebVitals';
 import { BrowserRouter, useLocation, useNavigate } from 'react-router-dom';
@@ -11,20 +10,18 @@ import { SignUp } from './components/SignUp';
 import { SignIn } from './components/SignIn';
 import { AppNav } from './components/AppNav';
 import { AddCar } from './components/AddCar';
-import { Cars } from './components/Cars';
 
-    // Fetch car data
+// Fetch car data
 export const fetchCarData = () => {
   return fetch('http://localhost:4000/api/cars')
     .then(response => response.json())
 };
 
-function API({ onUserChange }) {
+const API = ({ onUserChange }) => {
   const [users, setUsers] = useState([]);
   const [cars, setCars] = useState([]);
   const [prices, setPrices] = useState([]);
   const [currentUser, setCurrentUser] = useState(null);
-
 
   useEffect(() => {
     fetchUserData();
@@ -33,7 +30,7 @@ function API({ onUserChange }) {
 
   }, []);
 	
-    // Fetch user data
+  // Fetch user data
   const fetchUserData = () => {
     fetch('http://localhost:4000/api/users')
       .then(response => response.json())
@@ -41,7 +38,7 @@ function API({ onUserChange }) {
       .catch(console.error);
   };
   
-    // Fetch mileage price data
+  // Fetch mileage price data
   const fetchPriceData = () => {
     fetch('http://localhost:4000/api/mileage_prices')
       .then(response => response.json())
@@ -91,8 +88,6 @@ const handleAddCar = (event) => {
       .catch(console.error);
   }
 };
-
-
 
 const handleAddPrice = () => {
     const CID = prompt('Enter CID:');
@@ -151,14 +146,12 @@ const location = useLocation();
       {currentUser && <AppNav currentUser={currentUser} onSignOut={handleSignOut} />}
       {location.pathname === '/signup' && <SignUp onSubmit={handleAddUser} />}
       {location.pathname === '/signin' && <SignIn currentUser={currentUser} onSubmit={handleCheckUser} />}
-      {location.pathname === '/cars/add' && <AddCar onSubmit={handleAddCar} />}
-      {location.pathname === '/cars' && <Cars onSubmit={handleAddCar} />}
-      
+      {location.pathname === '/cars/add' && <AddCar onSubmit={handleAddCar} />}      
     </div>
   );
 }
 
-function APISignUp(props) {
+const APISignUp = (props) => {
   return (
     <API onUserChange={props.onUserChange}>
       {(onSubmit) => <SignUp onSubmit={onSubmit} />}
@@ -166,7 +159,7 @@ function APISignUp(props) {
   );
 }
 
-function APISignIn(props) {
+const APISignIn = (props) => {
   return (
     <API {...props}>
       {(onSubmit) => <SignIn onSubmit={onSubmit} />}
@@ -174,18 +167,10 @@ function APISignIn(props) {
   );
 }
 
-function APIAddCar(props) {
+const APIAddCar = (props) => {
   return (
     <API onUserChange={props.onUserChange}>
       {(onSubmit) => <AddCar onSubmit={onSubmit} />}
-    </API>
-  );
-}
-
-function APICars(props) {
-  return (
-    <API {...props}>
-      {(onSubmit) => <Cars onSubmit={onSubmit} />}
     </API>
   );
 }
