@@ -51,7 +51,7 @@ export const Cars = () => {
         </Col>
         <Col >
           <Button href='/cars/add' variant='primary' type='buttton'>
-            Add Car
+            Add Car <CiCirclePlus />
           </Button>
         </Col>
         </Row>
