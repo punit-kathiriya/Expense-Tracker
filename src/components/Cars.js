@@ -1,81 +1,86 @@
 import React, { useState, useEffect } from 'react';
-import Row from 'react-bootstrap/Row';
-import Col from 'react-bootstrap/Col';
-import Button from 'react-bootstrap/Button';
-import Card from 'react-bootstrap/Card';
+import { Button, Card, Col, Container, Row } from 'react-bootstrap';
 import { CiCircleMinus } from 'react-icons/ci';
 import { CiEdit } from 'react-icons/ci';
 import { CiCirclePlus } from 'react-icons/ci';
 import { useLocation } from 'react-router-dom';
+import { FaEdit, FaTrash } from 'react-icons/fa';
+import { fetchCarData } from '../api';
 
-
-
-export const Cars = () => {
-  const location = useLocation();
-  const formData = location.state;
-
-  // Array of cars that were added from the form
-  const [addedCars, setAddedCars] = useState(formData ? [formData] : []);
-
-  const handleRemove = (id) => {
-    setAddedCars(addedCars.filter((car) => car.id !== id));
-  };
-
+/// car: for creating a cars, onEdit if we add edit function, onDelete if we want to delete a car ///
+const CarCard = ({ car, onEdit, onDelete }) => {
+  const { ID, Manufacturer, Model, Tank, Battery, Is_Electric } = car;
   return (
-    <>
-      <Row className='mt-5'>
-        <Col xs={12} md={8}>
-          <h1>Car List</h1>
-        </Col>
-        <Col xs={12} md={4}>
-          <Button href='/cars/add' variant='primary' type='buttton'>
-            Add Car <CiCirclePlus />
-          </Button>
-        </Col>
-      </Row>
-      {addedCars.length > 0 && (
-        <Row className='mt-5'>
-          {addedCars.map((car, index) => (
-            <Col key={index} xs={12} md={4}>
-              <Card>
-                <Card.Body>
-                  <Row>
-                    <Col xs={12} md={8}>
-                      <Card.Title className='header-side'>
-                        <h2 className='mb-2'>Name: {car.Model}</h2>
-                        <h5>Manufacture: {car.Manufacturer}<br></br>
-                        Fuel Capacity: {car.Tank ?? 'N/A'}<br></br>
-                        Car Battery: {car.Battery ?? 'N/A'}%</h5>
-                      </Card.Title>
-                    </Col>
-                    <Col xs={12} md={4}>
-                      <Button
-                        href={`/car/edit/${car.id}`}
-                        className='mb-3'
-                        variant='primary'
-                        size='xs'
-                        type='button'
-                      >
-                        Edit <CiEdit />
-                      </Button>
-                      <Button
-                        variant='danger'
-                        size='xs'
-                        type='button'
-                        onClick={() => handleRemove(car.id)}
-                      >
-                        Remove <CiCircleMinus />
-                      </Button>
-                    </Col>
-                  </Row>
-                </Card.Body>
-              </Card>
-            </Col>
-          ))}
-        </Row>
-      )}
-    </>
+  <Col sm={6} md={4} lg={3} className="mb-4">
+    <Card>
+      <Card.Body>
+        <Card.Title>{Manufacturer} {Model}</Card.Title>
+        {Is_Electric ? (
+          <p>Battery: {Battery}%</p>
+        ) : (
+          <p>Tank: {Tank} L</p>
+        )}
+        <Button variant="primary" onClick={() => onEdit(car)}>
+          <FaEdit /> Edit
+        </Button>{' '}
+        <Button variant="danger" onClick={() => onDelete(ID)}>
+          <FaTrash /> Delete
+        </Button>
+      </Card.Body>
+    </Card>
+  </Col>
   );
 };
+
+
+const CarsFunction = () => {
+  const [cars, setCars] = useState([]);
+
+}
+
+export const Cars = () => {
+  const [cars, setCars] = useState([]);
+
+
+// This lines will get the data from the api
+
+  useEffect(() => {
+    fetchCarData()
+      .then(data => setCars(data))
+      .catch(console.error);
+  }, []);
+    
+  return (
+    <Container>
+    <div className='CarsPage'>
+      <Row>
+        <Col>
+          <h2>Own Cars</h2>
+        </Col>
+        <Col >
+          <Button href='/cars/add' variant='primary' type='buttton'>
+            Add Car
+          </Button>
+        </Col>
+        </Row>
+      </div>
+
+      <div className="Cars">
+        <Row>
+          {cars.map(car => (
+          <CarCard
+            key={car.ID}
+ // get the car
+            car={car}
+          />
+          ))}
+      </Row>
+    </div>
+    </Container>
+  );
+};
+
+
+
 
 export default Cars;

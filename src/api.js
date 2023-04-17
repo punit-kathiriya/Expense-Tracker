@@ -13,6 +13,11 @@ import { AppNav } from './components/AppNav';
 import { AddCar } from './components/AddCar';
 import { Cars } from './components/Cars';
 
+    // Fetch car data
+export const fetchCarData = () => {
+  return fetch('http://localhost:4000/api/cars')
+    .then(response => response.json())
+};
 
 function API({ onUserChange }) {
   const [users, setUsers] = useState([]);
@@ -33,13 +38,6 @@ function API({ onUserChange }) {
     fetch('http://localhost:4000/api/users')
       .then(response => response.json())
       .then(data => setUsers(data))
-      .catch(console.error);
-  };
-    // Fetch car data
-  const fetchCarData = () => {
-    fetch('http://localhost:4000/api/cars')
-      .then(response => response.json())
-      .then(data => setCars(data))
       .catch(console.error);
   };
   
