@@ -14,21 +14,36 @@ const App = () => {
   const handleUserChange = (event) => {
     setCurrentUser(event);
   };
-  if (currentUser) {	
+  if (currentUser) {
     console.log("app.js", currentUser);
   }
   return (
     <div className="App">
-      <AppNav key={currentUser ? currentUser.ID : 'logged-out'} currentUser={currentUser} />
-      <Container className="">
+      <AppNav
+      // key={currentUser ? currentUser.ID : "logged-out "}
+      // currentUser={currentUser}
+      />
+      <Container>
         <Routes>
           <Route path="/" element={<Home />} />
-          <Route path="/main" element={<Main />} />
+          <Route
+            path="/main"
+            element={<APIMain onUserChange={handleUserChange} />}
+          />
           <Route path="/cars" element={<Cars />} />
-          <Route path="/signin" element={<APISignIn onUserChange={handleUserChange} />} />
-          <Route path="/signup" element={<APISignUp onUserChange={handleUserChange} />} />
+          <Route
+            path="/signin"
+            element={<APISignIn onUserChange={handleUserChange} />}
+          />
+          <Route
+            path="/signup"
+            element={<APISignUp onUserChange={handleUserChange} />}
+          />
           <Route path="/api" element={<API />} />
-          <Route path="/cars/add" element={<APIAddCar onUserChange={handleUserChange} />} />
+          <Route
+            path="/cars/add"
+            element={<APIAddCar onUserChange={handleUserChange} />}
+          />
         </Routes>
       </Container>
     </div>
