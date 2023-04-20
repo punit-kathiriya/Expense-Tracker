@@ -2,7 +2,6 @@ import './App.css';
 import React, { useState } from 'react';
 import AppNav from './components/AppNav';
 import { Home } from './components/Home';
-import { Main } from './components/Main';
 import { Cars } from './components/Cars';
 import { Container } from 'react-bootstrap';
 import { Routes, Route, Navigate} from 'react-router-dom';
