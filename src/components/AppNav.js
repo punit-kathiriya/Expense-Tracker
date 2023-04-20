@@ -6,7 +6,7 @@ import React, { useEffect, useState } from 'react';
 import { Container, Nav, Navbar } from 'react-bootstrap';
 import { Link } from "react-router-dom"
 
-export const AppNav = ({ currentUser, onSignOut }) => {
+export const AppNav = ({ currentUser, onUserChange }) => {
   const [foundUser, setFoundUser] = useState(currentUser);
 
   useEffect(() => {
@@ -15,14 +15,13 @@ export const AppNav = ({ currentUser, onSignOut }) => {
 
   console.log("appnav founduser:", foundUser);
 
-  if (currentUser) {
-    console.log("appnav.js:", currentUser);
-    console.log("appnav.js name:", currentUser.Name);
-  }
-
-  console.log(onSignOut);
-
   const getId = localStorage.getItem("currentUserId");
+
+  const handleSignOut = () => {
+    localStorage.removeItem("currentUserId");
+    onUserChange(null);
+    setFoundUser(null); // set the state to null
+  };
 
   return (
     <Navbar expand="lg" bg="dark" variant="dark">
@@ -32,17 +31,21 @@ export const AppNav = ({ currentUser, onSignOut }) => {
 
         <Navbar.Collapse id="responsive-navbar-nav">
           <Nav className="me-auto">
-            <Link to="/" className="active">
-              Home
-            </Link>
-            <Link to="/main">Main</Link>
-            <Link to="/cars">Cars</Link>
+            {getId && getId ? (
+              <>
+                <Link to="/" className="active">
+                  Home
+                </Link>
+                <Link to="/main">Main</Link>
+                <Link to="/cars">Cars</Link>
+              </>
+            ) : null}
           </Nav>
           <Nav>
             {getId && getId ? (
               <>
                 <span className="navbar-text">{currentUser?.Name}</span>
-                <Link to="/signin" onClick={onSignOut}>
+                <Link to="/signin" onClick={handleSignOut}>
                   Sign Out
                 </Link>
               </>
@@ -58,5 +61,6 @@ export const AppNav = ({ currentUser, onSignOut }) => {
     </Navbar>
   );
 };
+
 
 export default AppNav;
