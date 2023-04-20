@@ -1,4 +1,4 @@
-// File name: AddCar.js
+// File name: Cars.js
 // Auth: Milla Mäkinen
 // Desc: This file containing code for display added Cars
 
