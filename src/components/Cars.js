@@ -12,7 +12,7 @@ import { fetchCarData } from '../api';
 const CarCard = ({ car, onEdit, onDelete }) => {
   const { ID, Manufacturer, Model, Tank, Battery, Is_Electric } = car;
   return (
-  <Col sm={6} md={4} lg={3} className="mb-4">
+  <Col xs={12} md={4} className="mb-4">
     <Card>
       <Card.Body>
         <Card.Title>{Manufacturer} {Model}</Card.Title>
