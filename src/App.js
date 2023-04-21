@@ -3,6 +3,7 @@ import React, { useState } from 'react';
 import AppNav from './components/AppNav';
 import { Home } from './components/Home';
 import { Cars } from './components/Cars';
+import { Dashboard } from './components/Dashboard';
 import { Container } from 'react-bootstrap';
 import { Routes, Route, Navigate} from 'react-router-dom';
 import { API, APISignUp, APISignIn, APIAddCar, APIMain } from "./api";
@@ -29,9 +30,13 @@ const App = () => {
       />
       <Container>
         <Routes>
-          <Route
+        <Route
             path="/"
-            element={isUserSignedIn() ? <Home onUserChange={handleUserChange} /> : <Navigate to="/signin" />}
+            element={<Home onUserChange={handleUserChange} />}
+          />
+          <Route
+            path="/dashboard"
+            element={isUserSignedIn() ? <Dashboard onUserChange={handleUserChange} /> : <Navigate to="/signin" />}
           />
           <Route
             path="/main"
