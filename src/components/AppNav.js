@@ -4,7 +4,7 @@
 
 import React, { useEffect, useState } from 'react';
 import { Container, Nav, Navbar } from 'react-bootstrap';
-import { Link } from "react-router-dom"
+import { Link } from 'react-router-dom';
 
 export const AppNav = ({ currentUser, onUserChange }) => {
   const [foundUser, setFoundUser] = useState(currentUser);
@@ -31,11 +31,11 @@ export const AppNav = ({ currentUser, onUserChange }) => {
 
         <Navbar.Collapse id="responsive-navbar-nav">
           <Nav className="me-auto">
+          <Link to="/" className="active">Home</Link>
+                  
             {getId && getId ? (
               <>
-                <Link to="/" className="active">
-                  Home
-                </Link>
+                <Link to="/dashboard">Dashboard</Link>
                 <Link to="/main">Main</Link>
                 <Link to="/cars">Cars</Link>
               </>
