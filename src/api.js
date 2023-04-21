@@ -11,6 +11,10 @@ import { AppNav } from './components/AppNav';
 import { AddCar } from './components/AddCar';
 import { Main } from "./components/Main";
 
+const getCurrentUserId = () => {
+  return localStorage.getItem('currentUserId')
+}
+
 // Fetch car data
 export const fetchCarData = () => {
   return fetch('http://localhost:4000/api/cars')
@@ -90,7 +94,7 @@ const handleAddPrice = (event) => {
 
   // modified the code to add new cars
   const handleAddCar = (event) => {
-    const UID = users.id;
+    const UID = localStorage.getItem('currentUserId');
     const Manufacturer = event.target.manufacturer.value;
     const Model = event.target.model.value;
     const Is_Electric = event.target.querySelector("#customCheck1").checked
