@@ -168,8 +168,11 @@ nav a:hover {
 
 .homepage-container {
   display: flex;
+  width: 50%;
+  margin: auto;
+  text-align: center;
   flex-direction: column;
   justify-content: center;
   align-items: center;
-  height: 100vh;
+  height: 80vh;
 }
