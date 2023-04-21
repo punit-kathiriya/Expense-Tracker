@@ -165,3 +165,11 @@ nav a:hover {
 .CarsPage {
   margin: 50px 0;
 }
+
+.homepage-container {
+  display: flex;
+  flex-direction: column;
+  justify-content: center;
+  align-items: center;
+  height: 100vh;
+}
