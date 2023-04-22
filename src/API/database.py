@@ -61,7 +61,7 @@ class MileagePrices(Car):
 	__table_args__ = (
 		Column("ID", INTEGER, primary_key = True, autoincrement = True),
 		Column("CID", INTEGER, ForeignKey("car.ID"), unique = True, sqlite_on_conflict_unique = "IGNORE"),
-  		Column("UID", INTEGER),
+  		# Column("UID", INTEGER),
 		Column("Total_filled", FLOAT),
 		Column("Total_price", FLOAT),
 		Column("Total_distance", FLOAT)

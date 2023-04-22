@@ -66,10 +66,8 @@ api.post('/api/cars', (req, res) => {
   });
 });
 
-api.post('/api/mileage_prices', (req, res) => {
-  const {UID} = req.body;
-  const sql = 'SELECT * FROM prices WHERE UID = ' + UID ;
-  console.log(sql);
+api.get('/api/mileage_prices', (req, res) => {
+  const sql = 'SELECT * FROM prices';
   db.all(sql, [], (err, rows) => {
     if (err) {
       console.error(err);
@@ -81,9 +79,9 @@ api.post('/api/mileage_prices', (req, res) => {
 });
 
 api.post('/api/mileage_prices', (req, res) => {
-  const { CID, UID, Total_filled, Total_price, Total_distance } = req.body;
-  const sql = 'INSERT INTO prices (CID, UID, Total_filled, Total_price, Total_distance) VALUES (?, ?, ?, ?)';
-  db.run(sql, [CID, UID, Total_filled, Total_price, Total_distance], function (err) {
+  const { CID,  Total_filled, Total_price, Total_distance } = req.body;
+  const sql = 'INSERT INTO prices (CID, } Total_filled, Total_price, Total_distance) VALUES (?, ?, ?, ?)';
+  db.run(sql, [CID, Total_filled, Total_price, Total_distance], function (err) {
     if (err) {
       console.error(err);
       res.status(500).send(err);

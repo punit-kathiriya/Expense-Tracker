@@ -19,17 +19,9 @@ export const Main = ({ onSubmit }) => {
   }, []);
 
   useEffect(() => {
-    const UID = localStorage.getItem('currentUserId');
-
-    fetch("http://localhost:4000/api/mileage_prices", {
-      method: "POST",
-      headers: { "Content-Type": "application/json" },
-      body: JSON.stringify({ UID }),
-    })
+    fetch("http://localhost:4000/api/mileage_prices")
       .then((response) => response.json())
-      .then((total) => setTotal(total))
-      .catch(console.error);
-  
+      .then((total) => setTotal(total));
   }, []);
 
   let sum = 0;

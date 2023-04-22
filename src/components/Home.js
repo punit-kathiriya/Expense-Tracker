@@ -35,7 +35,7 @@ export const Home = ({ currentUser, onUserChange }) => {
               <>
                 <span className="navbar-text">{currentUser?.Name}</span>
                 
-                <Button href="signin" onClick={handleSignOut} variant="primary">Sign Out</Button>
+                <Button href="signin" onClick={handleSignOut} variant="outline-secondary">Sign Out</Button>
               </>
             ) : (
               <>
