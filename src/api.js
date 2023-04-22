@@ -41,10 +41,17 @@ const API = ({ onUserChange }) => {
       .then((data) => setUsers(data))
       .catch(console.error);
   };
-  
+
   // Fetch mileage price data
   const fetchPriceData = () => {
-    fetch("http://localhost:4000/api/mileage_prices")
+    
+    const UID = localStorage.getItem('currentUserId');
+
+    fetch("http://localhost:4000/api/mileage_prices", {
+      method: "POST",
+      headers: { "Content-Type": "application/json" },
+      body: JSON.stringify({ UID }),
+    })
       .then((response) => response.json())
       .then((data) => setPrices(data))
       .catch(console.error);
@@ -62,32 +69,32 @@ const API = ({ onUserChange }) => {
         body: JSON.stringify({ Name, Email, Password }),
       })
 
-      .catch(console.error);
-  }
-};
+        .catch(console.error);
+    }
+  };
 
-// Add Expence Function
-const handleAddPrice = (event) => {
-  const UID = users.id;
+  // Add Expence Function
+  const handleAddPrice = (event) => {
+    const UID = localStorage.getItem('currentUserId');
     const CID = event.CID;
-    const Total_filled = event.Total_filled ;
+    const Total_filled = event.Total_filled;
     const Total_price = event.Total_price;
     const Total_distance = event.Total_distance;
     if (CID && Total_filled && Total_price && Total_distance && UID) {
       fetch('http://localhost:4000/api/mileage_prices', {
         method: 'POST',
         headers: { 'Content-Type': 'application/json' },
-        body: JSON.stringify({ CID, Total_filled, Total_price, Total_distance, UID }),
+        body: JSON.stringify({ CID, UID, Total_filled, Total_price, Total_distance }),
       })
         .then(response => response.json())
         .then((data) => {
-          setPrices([...prices, { ID: data.id, CID, Total_filled, Total_price, Total_distance, UID }]);
-          navigate("/");
+          setPrices([...prices, { ID: data.id, CID, UID, Total_filled, Total_price, Total_distance }]);
+          // navigate("/");
         })
         .catch(console.error);
-       
+
     } else {
-    
+
       alert("Please Fill All Fields!");
     }
   };
@@ -148,6 +155,7 @@ const handleAddPrice = (event) => {
       if (foundUser) {
         setCurrentUser(foundUser);
         localStorage.setItem("currentUserId", foundUser?.ID);
+        localStorage.setItem("currentUserName", foundUser?.Name);
         navigate("/");
         window.location.reload();
         resolve(foundUser);
@@ -168,6 +176,7 @@ const handleAddPrice = (event) => {
 
   const handleSignOut = () => {
     localStorage.removeItem("currentUserId");
+    localStorage.removeItem("currentUserName");
     setCurrentUser(null);
     console.log("Signout user:", currentUser);
   };

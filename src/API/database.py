@@ -61,6 +61,7 @@ class MileagePrices(Car):
 	__table_args__ = (
 		Column("ID", INTEGER, primary_key = True, autoincrement = True),
 		Column("CID", INTEGER, ForeignKey("car.ID"), unique = True, sqlite_on_conflict_unique = "IGNORE"),
+  		Column("UID", INTEGER),
 		Column("Total_filled", FLOAT),
 		Column("Total_price", FLOAT),
 		Column("Total_distance", FLOAT)
@@ -95,10 +96,10 @@ def add_data():
 
 
 	mileage_prices = [
-		{"CID": 1, "Total_filled": 30, "Total_price": 50, "Total_distance": 500},
-		{"CID": 2, "Total_filled": 20, "Total_price": 40, "Total_distance": 300},
-		{"CID": 3, "Total_filled": 0, "Total_price": 0, "Total_distance": 0},
-		{"CID": 4, "Total_filled": 9001, "Total_price": 1000, "Total_distance": 10000}
+		{"CID": 1, "UID": 1, "Total_filled": 30, "Total_price": 50, "Total_distance": 500},
+		{"CID": 2, "UID": 1, "Total_filled": 20, "Total_price": 40, "Total_distance": 300},
+		{"CID": 3, "UID": 1, "Total_filled": 0, "Total_price": 0, "Total_distance": 0},
+		{"CID": 4, "UID": 1, "Total_filled": 9001, "Total_price": 1000, "Total_distance": 10000}
 	]
 
 	for data in mileage_prices:

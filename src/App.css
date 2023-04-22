@@ -176,3 +176,8 @@ nav a:hover {
   align-items: center;
   height: 80vh;
 }
+
+.navmenu_btn{
+  display: flex;
+  align-items: center;
+}

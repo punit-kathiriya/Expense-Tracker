@@ -15,13 +15,21 @@ export const Main = ({ onSubmit }) => {
   useEffect(() => {
     fetch("http://localhost:4000/api/cars")
       .then((response) => response.json())
-      .then((total) => setData(total));
+      .then((data) => setData(data));
   }, []);
 
   useEffect(() => {
-    fetch("http://localhost:4000/api/mileage_prices")
+    const UID = localStorage.getItem('currentUserId');
+
+    fetch("http://localhost:4000/api/mileage_prices", {
+      method: "POST",
+      headers: { "Content-Type": "application/json" },
+      body: JSON.stringify({ UID }),
+    })
       .then((response) => response.json())
-      .then((data) => setTotal(data));
+      .then((total) => setTotal(total))
+      .catch(console.error);
+  
   }, []);
 
   let sum = 0;
