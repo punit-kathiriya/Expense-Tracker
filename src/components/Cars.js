@@ -57,10 +57,12 @@ export const Cars = () => {
         <Col>
           <h2>Own Cars</h2>
         </Col>
-        <Col >
+        <Col>
+        <div  classname = "AddCarButton">
           <Button href='/cars/add' variant='primary' type='buttton'>
             Add Car
           </Button>
+        </div>
         </Col>
         </Row>
       </div>
