@@ -16,6 +16,7 @@ export const AppNav = ({ currentUser, onUserChange }) => {
   console.log("appnav founduser:", foundUser);
 
   const getId = localStorage.getItem("currentUserId");
+  const getName = localStorage.getItem("currentUserName");
 
   const handleSignOut = () => {
     localStorage.removeItem("currentUserId");
@@ -44,10 +45,12 @@ export const AppNav = ({ currentUser, onUserChange }) => {
           <Nav>
             {getId && getId ? (
               <>
-                <span className="navbar-text">{currentUser?.Name}</span>
+                <div className='navmenu_btn'>
+                <span className="navbar-text">{getName}</span>
                 <Link to="/signin" onClick={handleSignOut}>
                   Sign Out
                 </Link>
+                </div>
               </>
             ) : (
               <>

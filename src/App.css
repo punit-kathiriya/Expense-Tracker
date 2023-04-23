@@ -188,3 +188,8 @@ nav a:hover {
 .NotAvailable h4 {
   margin-top: 20px;
 }
+
+.navmenu_btn{
+  display: flex;
+  align-items: center;
+}

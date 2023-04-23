@@ -15,13 +15,13 @@ export const Main = ({ onSubmit }) => {
   useEffect(() => {
     fetch("http://localhost:4000/api/cars")
       .then((response) => response.json())
-      .then((total) => setData(total));
+      .then((data) => setData(data));
   }, []);
 
   useEffect(() => {
     fetch("http://localhost:4000/api/mileage_prices")
       .then((response) => response.json())
-      .then((data) => setTotal(data));
+      .then((total) => setTotal(total));
   }, []);
 
   let sum = 0;
