@@ -96,11 +96,20 @@ def add_data():
 
 
 	mileage_prices = [
+		{"CID": 1, "Total_filled": 30, "Total_price": 50, "Total_distance": 500},
+		{"CID": 2, "Total_filled": 20, "Total_price": 40, "Total_distance": 300},
+		{"CID": 3, "Total_filled": 0, "Total_price": 0, "Total_distance": 0},
+		{"CID": 4, "Total_filled": 9001, "Total_price": 1000, "Total_distance": 10000}
+	]
+	
+	'''
+	mileage_prices = [
 		{"CID": 1, "UID": 1, "Total_filled": 30, "Total_price": 50, "Total_distance": 500},
 		{"CID": 2, "UID": 1, "Total_filled": 20, "Total_price": 40, "Total_distance": 300},
 		{"CID": 3, "UID": 1, "Total_filled": 0, "Total_price": 0, "Total_distance": 0},
 		{"CID": 4, "UID": 1, "Total_filled": 9001, "Total_price": 1000, "Total_distance": 10000}
 	]
+	'''
 
 	for data in mileage_prices:
 		i = insert(MileagePrices).values(data)
