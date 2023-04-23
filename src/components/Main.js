@@ -38,8 +38,8 @@ export const Main = ({ onSubmit }) => {
     };
 
     onSubmit(priceing);
-
-    console.log(priceing);
+    navigate("/dashboard");
+    alert("Expenses added successfully");
   };
 
   return (
