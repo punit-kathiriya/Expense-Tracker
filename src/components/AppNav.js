@@ -46,7 +46,7 @@ export const AppNav = ({ currentUser, onUserChange }) => {
             {getId && getId ? (
               <>
                 <div className='navmenu_btn'>
-                <span className="navbar-text">{getName}</span>
+                <span className="navbar-text"> {getName}</span>
                 <Link to="/signin" onClick={handleSignOut}>
                   Sign Out
                 </Link>
