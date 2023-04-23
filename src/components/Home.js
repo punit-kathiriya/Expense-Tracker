@@ -1,58 +1,55 @@
-import React from 'react';
-import Container from 'react-bootstrap/Container';
-import Row from 'react-bootstrap/Row';
-import Col from 'react-bootstrap/Col';
-import Card from 'react-bootstrap/Card';
-import Button from 'react-bootstrap/Button';
+// File name: AddCar.js
+// Auth: Punit
+// Desc: This file containing code for the Expense Tracker to display the prices
+
+import React, { useState, useEffect } from "react";
+import { Button, Container } from 'react-bootstrap';
 import { CiCirclePlus } from "react-icons/ci";
 
-export const Home = () => {
+
+export const Home = ({ currentUser, onUserChange }) => {
+  const [foundUser, setFoundUser] = useState(currentUser);
+
+  useEffect(() => {
+    setFoundUser(currentUser);
+  }, [currentUser]);
+
+
+  const getId = localStorage.getItem("currentUserId");
+
+  const handleSignOut = () => {
+    localStorage.removeItem("currentUserId");
+    onUserChange(null);
+    setFoundUser(null); // set the state to null
+  };
+
+
   return (
     <>
-      <Row className='mt-5'>
-      <Col xs={12} md={8}><h1>Expense Tracker App!</h1></Col>
-        <Col xs={12} md={4}>
-        <Button href="/main"  variant="primary" type="buttton">
-            Add Expence <CiCirclePlus />
-          </Button>
-        </Col>
-      </Row>
-
-      <Row className='mt-5'>
-        <Col xs={12} md={4} className="mt-2">
-          <Card>
-            <Card.Body>
-              <Card.Title className='header-side'><h2 className='mb-2'>0.00 €</h2>Total Cost</Card.Title>
-            </Card.Body>
-          </Card>
-        </Col>
-        
-        <Col xs={12} md={4} className="mt-2">
-          <Card>
-            <Card.Body>
-              <Card.Title className='header-side'><h2 className='mb-2'>0.00 €</h2>Total Consumption (in Ltr)</Card.Title>
-            </Card.Body>
-          </Card>
-        </Col>
-
-        <Col xs={12} md={4} className="mt-2">
-          <Card>
-            <Card.Body>
-              <Card.Title className='header-side'><h2 className='mb-2'>0.00 €</h2>Total Distance (in KM)</Card.Title>
-            </Card.Body>
-          </Card>
-        </Col>
-    
-        <Col xs={12} md={4} className="mt-2">
-          <Card>
-            <Card.Body>
-              <Card.Title className='header-side'><h2 className='mb-2'>0.00 €</h2>Average Expence per 100km (in €)</Card.Title>
-            </Card.Body>
-          </Card>
-        </Col>
-      </Row>
+    <div className="homepage-container">
+      <Container className="my-5">
+          <h2>Welcome to Expense Tracker App</h2><br></br>
+          <p>Car Fuel Expenses application to help families calculate the fuel expenses of their cars. This application dynamically calculates and presents various information related to the refueling expenses of cars.</p>
+          <div> <br></br>
+          {getId && getId ? (
+              <>
+                <span className="navbar-text">{currentUser?.Name}</span>
+                
+                <Button href="signin" onClick={handleSignOut} variant="outline-secondary">Sign Out</Button>
+              </>
+            ) : (
+              <>
+                
+            <Button href="signin" variant="primary">Sign In</Button> { }
+            <Button href="signup" variant="outline-secondary">Sign Up</Button>
+              </>
+            )}
+            
+          </div>
+        </Container>
+      </div>
     </>
   );
-}
+};
 
 export default Home;

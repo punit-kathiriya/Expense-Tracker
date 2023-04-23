@@ -1,10 +1,12 @@
-import React, { useEffect, useState } from 'react';
-import Container from 'react-bootstrap/Container';
-import Nav from 'react-bootstrap/Nav';
-import Navbar from 'react-bootstrap/Navbar';
-import { Link } from "react-router-dom"
+// File name: AppNav.js
+// Auth: Sami Wazni
+// Desc: This file containing code for creating a Menu
 
-export const AppNav = ({ currentUser, onSignOut }) => {
+import React, { useEffect, useState } from 'react';
+import { Container, Nav, Navbar } from 'react-bootstrap';
+import { Link } from 'react-router-dom';
+
+export const AppNav = ({ currentUser, onUserChange }) => {
   const [foundUser, setFoundUser] = useState(currentUser);
 
   useEffect(() => {
@@ -12,28 +14,43 @@ export const AppNav = ({ currentUser, onSignOut }) => {
   }, [currentUser]);
 
   console.log("appnav founduser:", foundUser);
-	
-	
-  if (currentUser) {
-	console.log("appnav.js:", currentUser)
-	console.log("appnav.js name:", currentUser.Name)
-	}
+
+  const getId = localStorage.getItem("currentUserId");
+  const getName = localStorage.getItem("currentUserName");
+
+  const handleSignOut = () => {
+    localStorage.removeItem("currentUserId");
+    onUserChange(null);
+    setFoundUser(null); // set the state to null
+  };
+
   return (
     <Navbar expand="lg" bg="dark" variant="dark">
       <Container>
         <Navbar.Brand to="/">Expense Tracker App</Navbar.Brand>
         <Navbar.Toggle aria-controls="responsive-navbar-nav" />
+
         <Navbar.Collapse id="responsive-navbar-nav">
           <Nav className="me-auto">
-            <Link to="/" className="active">Home</Link>
-            <Link to="/main">Main</Link>
-            <Link to="/cars">Cars</Link>
+          <Link to="/" className="active">Home</Link>
+                  
+            {getId && getId ? (
+              <>
+                <Link to="/dashboard">Dashboard</Link>
+                <Link to="/main">Main</Link>
+                <Link to="/cars">Cars</Link>
+              </>
+            ) : null}
           </Nav>
           <Nav>
-            {currentUser ? (
+            {getId && getId ? (
               <>
-                <span className="navbar-text">{currentUser.Name}</span>
-                <Link to="/signin" onClick={onSignOut}>Sign Out</Link>
+                <div className='navmenu_btn'>
+                <span className="navbar-text"> {getName}</span>
+                <Link to="/signin" onClick={handleSignOut}>
+                  Sign Out
+                </Link>
+                </div>
               </>
             ) : (
               <>

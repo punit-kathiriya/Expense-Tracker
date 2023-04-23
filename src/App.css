@@ -166,7 +166,30 @@ nav a:hover {
   margin: 50px 0;
 }
 
-.AddCarButton {
-  margin-right: 450px;
-  border: 5px #e73333;
+.homepage-container {
+  display: flex;
+  width: 50%;
+  margin: auto;
+  text-align: center;
+  flex-direction: column;
+  justify-content: center;
+  align-items: center;
+  height: 80vh;
+}
+
+.NotAvailable {
+  width: 100%;
+  margin: 20px 0;
+  padding: 80px 0;
+  text-align: center;
+  background: #e8e9eaba;
+  box-shadow: rgba(63, 57, 94, 0.1) 0px 1px 3px 0px, rgba(48, 31, 116, 0.06) 0px 1px 2px 0px;}
+
+.NotAvailable h4 {
+  margin-top: 20px;
+}
+
+.navmenu_btn{
+  display: flex;
+  align-items: center;
 }

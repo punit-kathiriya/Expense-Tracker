@@ -1,37 +1,64 @@
-import React, { useState } from 'react';
 import './App.css';
-import { Routes, Route } from 'react-router-dom';
-import { API, APISignUp, APISignIn, APIAddCar } from './api';
+import React, { useState } from 'react';
 import AppNav from './components/AppNav';
-import { SignIn } from './components/SignIn';
-import { SignUp } from './components/SignUp';
 import { Home } from './components/Home';
-import { Main } from './components/Main';
 import { Cars } from './components/Cars';
-import { AddCar } from './components/AddCar';
+import { Dashboard } from './components/Dashboard';
 import { Container } from 'react-bootstrap';
+import { Routes, Route, Navigate} from 'react-router-dom';
+import { API, APISignUp, APISignIn, APIAddCar, APIMain } from "./api";
 
-function App() {
+const App = () => {
   const [currentUser, setCurrentUser] = useState(null);
 
   const handleUserChange = (event) => {
     setCurrentUser(event);
   };
-  if (currentUser) {	
+  if (currentUser) {
     console.log("app.js", currentUser);
   }
+
+  // To check if the user did sign in or not
+  const isUserSignedIn = () => {
+    const userId = localStorage.getItem("currentUserId");
+    return !!userId;
+  };
+  
   return (
     <div className="App">
-      <AppNav key={currentUser ? currentUser.ID : 'logged-out'} currentUser={currentUser} />
-      <Container className="">
+      <AppNav
+      />
+      <Container>
         <Routes>
-          <Route path="/" element={<Home />} />
-          <Route path="/main" element={<Main />} />
-          <Route path="/cars" element={<Cars />} />
-          <Route path="/signin" element={<APISignIn onUserChange={handleUserChange} />} />
-          <Route path="/signup" element={<APISignUp onUserChange={handleUserChange} />} />
+        <Route
+            path="/"
+            element={<Home onUserChange={handleUserChange} />}
+          />
+          <Route
+            path="/dashboard"
+            element={isUserSignedIn() ? <Dashboard onUserChange={handleUserChange} /> : <Navigate to="/signin" />}
+          />
+          <Route
+            path="/main"
+            element={isUserSignedIn() ? <APIMain onUserChange={handleUserChange} /> : <Navigate to="/signin" />}
+          />
+          <Route
+            path="/cars"
+            element={isUserSignedIn() ? <Cars /> : <Navigate to="/signin" />}
+          />
+          <Route
+            path="/cars/add"
+            element={isUserSignedIn() ? <APIAddCar onUserChange={handleUserChange} /> : <Navigate to="/signin" />}
+          />
+          <Route
+            path="/signin"
+            element={<APISignIn onUserChange={handleUserChange} />}
+          />
+          <Route
+            path="/signup"
+            element={<APISignUp onUserChange={handleUserChange} />}
+          />
           <Route path="/api" element={<API />} />
-          <Route path="/cars/add" element={<APIAddCar onUserChange={handleUserChange} />} />
         </Routes>
       </Container>
     </div>

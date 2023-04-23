@@ -2,15 +2,15 @@
 // Auth: Sami Wazni
 // Desc: File currently in development containing code for user sign in
 
-import React, { useState } from 'react';
-import { Row, Col } from 'react-bootstrap';
-import Log from '../images/Log.jpg';
+import React, { useState } from "react";
+import { Row, Col } from "react-bootstrap";
+import Log from "../images/Log.jpg";
 import { BiLogInCircle } from "react-icons/bi";
-import { useNavigate } from 'react-router-dom';
+import { useNavigate } from "react-router-dom";
 
 export const SignIn = ({ onSubmit, currentUser }) => {
-  const [email, setEmail] = useState('');
-  const [password, setPassword] = useState('');
+  const [email, setEmail] = useState("");
+  const [password, setPassword] = useState("");
   const navigate = useNavigate();
 
   const handleSubmit = (event) => {
@@ -22,17 +22,17 @@ export const SignIn = ({ onSubmit, currentUser }) => {
 
     onSubmit(user)
       .then((foundUser) => {
-		event.preventDefault();
+        event.preventDefault();
         // navigate("/");
       })
       .catch((error) => {
-        alert("Wrong email or password2")
+        alert("Wrong email or password2");
         console.error(error);
         // You can also update the component state to show an error message to the user.
       });
   };
-	console.log("si:", currentUser)
-  
+  console.log("si:", currentUser);
+
   return (
     <div className="LogPages">
       <Row>
@@ -74,7 +74,11 @@ export const SignIn = ({ onSubmit, currentUser }) => {
                     className="custom-control-input"
                     id="customCheck1"
                   />
-                  <label className="custom-control-label" id="check" htmlFor="customCheck1"> 
+                  <label
+                    className="custom-control-label"
+                    id="check"
+                    htmlFor="customCheck1"
+                  >
                     Remember me
                   </label>
                 </div>
@@ -90,9 +94,9 @@ export const SignIn = ({ onSubmit, currentUser }) => {
             </form>
           </div>
         </Col>
-      </Row>   
+      </Row>
     </div>
   );
-}
+};
 
 export default SignIn;

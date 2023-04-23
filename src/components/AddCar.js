@@ -14,6 +14,26 @@ export const AddCar = ({ onSubmit }) => {
 
   const handleSubmit = (event) => {
     event.preventDefault();
+    
+    // Validation if the user input less than 0 or more than 100/200
+    const batteryInput = event.target.elements.battery;
+    const batteryValue = parseInt(batteryInput.value);
+
+    const tankInput = event.target.elements.tank;
+    const tankValue = parseInt(tankInput.value);
+
+    if (batteryValue < 0 || batteryValue > 100) {
+      alert("Battery percentage should be between 0 and 100.");
+      batteryInput.focus();
+      return;
+    }
+
+    if (tankValue < 0 || tankValue > 100) {
+      alert("Fuel capacity must be between 0 and 200 liters");
+      tankInput.focus();
+      return;
+    }
+  
     onSubmit(event);
     navigate("/cars");
     alert("Car added successfully");
