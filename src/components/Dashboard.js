@@ -5,13 +5,25 @@
 import React, { useState, useEffect } from "react";
 import { Row, Col, Card, Button } from 'react-bootstrap';
 import { CiCirclePlus } from "react-icons/ci";
+import { fetchCarData } from '../api';
 
 
 export const Dashboard = () => {
   const [total, setTotal] = useState([]);
+  const [car, setCar] = useState([]);
+
   // const [consumption, setConsumption] = useState([]);
   // const [distance, setDistance] = useState([]);
   // const [expence, setExpence] = useState([]);
+
+  const currentUserId = localStorage.getItem('currentUserId');
+
+  useEffect(() => {
+    fetchCarData()
+      .then(data => setCar(data.filter(car => car.UID === parseInt(currentUserId))))
+      .catch(console.error);
+  }, [currentUserId]);
+
 
   useEffect(() => {
     fetch("http://localhost:4000/api/mileage_prices")
@@ -19,14 +31,29 @@ export const Dashboard = () => {
       .then((data) => setTotal(data));
   }, []);
 
+  let carsData = [];
+
+  car.map((items) => carsData.push(items.ID));
+
+
   let totalcost = 0;
 
-  total.map((items) => (totalcost += items.Total_price));
+  total.map((items) => (
+    (carsData.includes(items.CID)) ?
+      totalcost += items.Total_price 
+    : null ) );
 
   let totalConsumption = 0;
-  total.map((items) => (totalConsumption += items.Total_filled));
+  total.map((items) => (
+    (carsData.includes(items.CID)) ?
+    totalConsumption += items.Total_filled 
+    : null ) );
+
   let totalDistance = 0;
-  total.map((items) => (totalDistance += items.Total_distance));
+  total.map((items) => (
+    (carsData.includes(items.CID)) ?
+    totalDistance += items.Total_distance 
+    : null ) );
 
   let totalAverage = ((totalcost * 100) / totalDistance).toFixed(2);;
 
