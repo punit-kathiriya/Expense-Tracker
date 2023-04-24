@@ -8,6 +8,8 @@ import { CiEdit , CiCirclePlus} from 'react-icons/ci';
 import { FaTrash } from 'react-icons/fa';
 import { fetchCarData } from '../api';
 
+
+
 const CarCard = ({ car, onEdit, onDelete }) => {
   const { ID, Manufacturer, Model, Tank, Battery, Is_Electric } = car;
   return (
@@ -20,8 +22,8 @@ const CarCard = ({ car, onEdit, onDelete }) => {
           ) : (
             <p>Tank: {Tank} L</p>
           )}
-          <Button variant="primary" onClick={() => onEdit(car)}>
-            <CiEdit /> Edit
+          <Button href='/editcar' variant='primary' type='buttton'>
+            Edit <CiCirclePlus />
           </Button>{' '}
           <Button variant="danger" onClick={() => onDelete(ID)}>
             <FaTrash /> Delete
@@ -55,6 +57,20 @@ export const Cars = () => {
     );
   }
 
+  /*
+  const handleEdit = (car) => {
+    car.preventDefault();
+    onEdit(car);
+    navigate("/editcar");
+  };
+
+  const handleDelete = (id) => {
+    id.preventDefault();
+    onEdit(id);
+    navigate("/car");
+
+  };
+  */
   return (
     <Container>
       <div className='CarsPage'>
@@ -62,7 +78,7 @@ export const Cars = () => {
           <Col>
             <h2>Own Cars</h2>
           </Col>
-          <Col >
+          <Col class="btn btn-outline-success my-2 my-sm-0">
             <Button href='/cars/add' variant='primary' type='buttton'>
               Add Car <CiCirclePlus />
             </Button>
@@ -76,6 +92,8 @@ export const Cars = () => {
             <CarCard
               key={car.ID}
               car={car}
+              //onEdit={handleEdit}
+              //onDelete={handleDelete}
             />
           ))}
         </Row>
