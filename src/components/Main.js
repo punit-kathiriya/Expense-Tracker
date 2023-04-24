@@ -58,7 +58,7 @@ export const Main = ({ onSubmit }) => {
           <Card>
             <Card.Body>
               <Card.Title className="header-side">
-                Your Total Expense : <span>{sum}€</span>
+                Your Total Expense : <span>{sum} €</span>
               </Card.Title>
             </Card.Body>
           </Card>
