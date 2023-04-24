@@ -12,10 +12,12 @@ export const Main = ({ onSubmit }) => {
   const [Total_distance, setTotal_distance] = useState("");
   const [CID, setCID] = useState("");
 
+  const currentUserId = localStorage.getItem('currentUserId');
+
   useEffect(() => {
     fetch("http://localhost:4000/api/cars")
       .then((response) => response.json())
-      .then((data) => setData(data));
+      .then(data => setData(data.filter(data => data.UID === parseInt(currentUserId))))
   }, []);
 
   useEffect(() => {
