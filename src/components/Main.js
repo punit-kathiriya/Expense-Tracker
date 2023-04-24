@@ -26,9 +26,16 @@ export const Main = ({ onSubmit }) => {
       .then((total) => setTotal(total));
   }, []);
 
+  let carsData = [];
+
+  data.map((items) => carsData.push(items.ID));
+
   let sum = 0;
 
-  total.map((items) => (sum += items.Total_price));
+  total.map((items) => (
+    (carsData.includes(items.CID)) ?
+    sum += items.Total_price 
+    : null ) );
 
   const handleSubmit = (event) => {
     event.preventDefault();
