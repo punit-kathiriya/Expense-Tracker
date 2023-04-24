@@ -1,6 +1,6 @@
 import React, { useState, useEffect } from "react";
 import { useNavigate } from "react-router-dom";
-import { Container, Row, Col, Button, Form, Card } from "react-bootstrap";
+import { Row, Col, Button, Form, Card } from "react-bootstrap";
 import { CiCirclePlus } from "react-icons/ci";
 
 export const Main = ({ onSubmit }) => {
@@ -53,9 +53,6 @@ export const Main = ({ onSubmit }) => {
               <Card.Title className="header-side">
                 Your Total Expense : <span>{sum}€</span>
               </Card.Title>
-              {/* <Card.Text>
-              0.00
-              </Card.Text> */}
             </Card.Body>
           </Card>
         </Col>

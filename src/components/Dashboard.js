@@ -11,11 +11,6 @@ import { fetchCarData } from '../api';
 export const Dashboard = () => {
   const [total, setTotal] = useState([]);
   const [car, setCar] = useState([]);
-
-  // const [consumption, setConsumption] = useState([]);
-  // const [distance, setDistance] = useState([]);
-  // const [expence, setExpence] = useState([]);
-
   const currentUserId = localStorage.getItem('currentUserId');
 
   useEffect(() => {
