@@ -69,7 +69,7 @@ export const Main = ({ onSubmit }) => {
           <h2>Add Expense</h2>
           <Form onSubmit={handleSubmit} action="#">
             <Form.Group className="mb-3" controlId="formBasic">
-              <Form.Label>Price of Refueling </Form.Label>
+              <Form.Label>Price of Refueling (in €)</Form.Label>
               <Form.Control
                 type="number"
                 name="Total_filled"
